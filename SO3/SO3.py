@@ -27,6 +27,14 @@ class SO3():
         skew_matrix = ((np.arcsin(norm)) / norm) * A
         return so3(vee(skew_matrix))
 
+    def centered_log_map(self, other):
+        """
+        Returns the log map centered on other
+        """
+        centered_SO3 = SO3(self.R @ self.R.T) # R@S^-1
+        return centered_SO3.log_map()
+
+
 
 class so3():
     def __init__(self, w):
