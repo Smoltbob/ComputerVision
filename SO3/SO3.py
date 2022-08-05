@@ -84,4 +84,4 @@ class so3:
                 2 * (z**2 - 1) * s**2 + 1,
             ],
         ]
-        return SO3(exp)
+        return SO3(np.array(exp))
