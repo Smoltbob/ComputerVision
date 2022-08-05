@@ -14,7 +14,7 @@ class SO3:
         self.R = R
 
     def __repr__(self):
-        return f"{self.R}"
+        return f"SO3:  {self.R}"
 
     def __matmul__(self, rhs):
         return SO3(self.R @ rhs.R)
@@ -43,7 +43,7 @@ class so3:
         self.w = w  # euler angles
 
     def __repr__(self):
-        return f"{self.w}"
+        return f"so3: {self.w}"
 
     def exp_map_generic(self):
         """
@@ -57,6 +57,9 @@ class so3:
         return SO3(exp)
 
     def exp_map_euler(self):
+        """
+        SO3 specific implementation
+        """
         w = np.array(self.w)
         theta = np.linalg.norm(w)
         w = w / theta
