@@ -18,7 +18,7 @@ def SO3_median(rotation_list: list, threshold=1e-6, S_t=None):
             numerator += xi / X
             denumerator += 1 / X
         delta = numerator / denumerator
-        S_t = so3(delta).exp_map_generic() @ S_t
+        S_t = so3(delta).exp_map_euler() @ S_t
 
         if np.linalg.norm(delta) < threshold:
             break
