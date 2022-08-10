@@ -1,4 +1,7 @@
-import numpy as np
+import sys
+
+sys.path.append("../2DProjectiveGeometry")
+from math_utils import norm
 
 # todo: SO2, complex
 
@@ -72,3 +75,10 @@ class Quaternion:
         assert sum(self.w) != 0  # TODO FP comparison
         factor = 1 / sum([x**2 for x in self.w])
         return self.conjugate() * factor
+
+    def norm(self):
+        return norm(self.w)
+
+
+class UnitQuaternion(Quaternion):
+    pass
