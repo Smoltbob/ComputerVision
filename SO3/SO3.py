@@ -1,5 +1,10 @@
 import numpy as np
 
+import sys
+
+sys.path.append("../Quaternions")
+from quaternions import *
+
 
 def skew(v):
     return [[0, -v[2], v[1]], [v[2], 0, -v[0]], [-v[1], v[0], 0]]
@@ -10,14 +15,15 @@ def vee(W):
 
 
 class SO3:
-    def __init__(self, R):
+    def __init__(self, R=None):
         self.R = R
 
     def __repr__(self):
-        return f"SO3:  {self.R}"
+        return f"SO3: {self.R}"
 
     def __matmul__(self, rhs):
-        return SO3(self.R @ rhs.R)
+        # TODO check that they both have the same type and representation
+        return SO3(q=self.R @ rhs.R)
 
     def log_map(self):
         """
