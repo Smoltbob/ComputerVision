@@ -31,3 +31,8 @@ def squaredNorm(vec):
 
 def norm(vec):
     return sqrt(squaredNorm(vec))
+
+
+def normalize(vec):
+    n = norm(vec)
+    return [x / n for x in vec]
