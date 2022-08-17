@@ -27,6 +27,9 @@ class Quaternion:
     def isVector(self):
         return self.scalar() == 0
 
+    def angle(self):
+        pass
+
     def __add__(self, rhs):
         """
         Component wise addition
@@ -163,5 +166,5 @@ class UnitQuaternion(Quaternion):
 
         angle = norm(w) / 2
         scalar = cos(angle)
-        vector_factor = sin(angle) / angle
+        vector_factor = sin(angle) / norm(w)
         return UnitQuaternion([scalar, *[vector_factor * x for x in w]])
