@@ -23,7 +23,20 @@ class SO3:
 
     def __matmul__(self, rhs):
         # TODO check that they both have the same type and representation
-        return SO3(q=self.R @ rhs.R)
+        return SO3(self.R @ rhs.R)
+
+    def ypr(self, units="deg"):
+        rot_matrix = self.R
+        yaw = np.arctan2(rot_matrix[1, 0], rot_matrix[0, 0])
+        pitch = np.arctan2(
+            -rot_matrix[2, 0], np.sqrt(rot_matrix[2, 1] ** 2 + rot_matrix[2, 2] ** 2)
+        )
+        roll = np.arctan2(rot_matrix[2, 1], rot_matrix[2, 2])
+
+        if units == "deg":
+            rad_2_deg = 180 / np.pi
+            return rad_2_deg * yaw, rad_2_deg * pitch, rad_2_deg * roll
+        return yaw, pitch, roll
 
     def log_map(self):
         """
