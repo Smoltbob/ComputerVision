@@ -1,5 +1,8 @@
+from math import sqrt, atan2
+
 class Complex:
     def __init__(self, real, imag):
+        # TODO polar form
         self.r = real
         self.i = imag
 
@@ -23,3 +26,8 @@ class Complex:
         den = rhs.r ** 2 + rhs.i ** 2
         return Complex((self.r * rhs.r + self.i * rhs.i)/den, (self.r * rhs.i - self.i * rhs.r)/den)
         
+    def magnitude(self):
+        return sqrt(self.r ** 2 + self.i ** 2)
+
+    def angle(self):
+        return atan2(self.i, self.r)
