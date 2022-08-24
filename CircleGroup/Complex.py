@@ -21,12 +21,16 @@ class Complex:
     def __mul__(self, rhs):
         return Complex(self.r * rhs.r - self.i * rhs.i, self.r * rhs.i + self.i * rhs.r)
 
+    def inverse(self):
+        return Complex(self.r / (self.r ** 2 + self.i ** 2), -self.i / (self.r ** 2 + self.i ** 2))
+
     def __div__(self, rhs):
         # TODO check rhs non zero
         den = rhs.r ** 2 + rhs.i ** 2
         return Complex((self.r * rhs.r + self.i * rhs.i)/den, (self.r * rhs.i - self.i * rhs.r)/den)
         
     def magnitude(self):
+        # TODO use squared norm from math utils
         return sqrt(self.r ** 2 + self.i ** 2)
 
     def angle(self):

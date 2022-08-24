@@ -17,8 +17,19 @@ class S1:
     def __repr__(self):
         return f"S1: {self.log_map()} rads"
 
-    def norm(self):
-        pass
+    def __matmul__(self, rhs):
+        tmp = S1()
+        tmp.z = self.z * rhs.z
+        return tmp
+
+    def angle(self):
+        return self.z.angle()
+
+    def inverse(self):
+        # TODO constructor from z / build S1 with -angle
+        tmp = S1()
+        tmp.z = self.z.inverse()
+        return tmp
 
     def exp_map(rot_angle):
         """
@@ -31,4 +42,4 @@ class S1:
         From S1 to angle in R
         TODO enforce unity
         """
-        return self.z.angle()
+        return self.angle()
