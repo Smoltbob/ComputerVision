@@ -7,7 +7,7 @@ class Complex:
         self.i = imag
 
     def __eq__(self, rhs):
-        self.r == rhs.r and self.i == rhs.i
+        return self.r == rhs.r and self.i == rhs.i
 
     def conjugate(self):
         return Complex(self.r, -self.i)
