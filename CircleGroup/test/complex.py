@@ -6,6 +6,9 @@ import Complex
 class TestComplex(unittest.TestCase):
 
     def setUp(self):
+        """
+        TODO use random
+        """
         self.r1 = 1
         self.i1 = 2
         self.cplx1 = Complex.Complex(self.r1, self.i1)
