@@ -73,10 +73,29 @@ class HomogeneousPoint():
 
 
 class Line():
+    """
+    A line can be defined from:
+    - An equation ax+by+c=0 (vector [a,b,c])
+    - Two points
+    - A point and an angle
+    """
+
     # TODO also init directly from vector
     def __init__(self, vector):
         assert(len(vector) == 3)
         self.vector = vector
+
+    def line_from_points(self, pt1, pt2):
+        """
+        Line from two inhomogeneous points
+        Assert: points are inhomogeneous
+        """
+        x0, y0 = *pt1.vector
+        x1, y1 = *pt2.vector
+        a = y0 - y1
+        b = x1 - x0
+        c = y1*x0 - y0*x1
+        self.vector = [a, b, c]
 
     # TODO define the tolerance properly
     def __contains__(self, p: HomogeneousPoint):
@@ -148,3 +167,19 @@ class Line():
             self.__plot3d(ax, color, show_plane)
         else:
             self.__plot2d(ax, color)
+
+
+class Utils():
+    """
+    A kind of anonymous namespace with utilities
+    """
+
+    def distance_line_point(line, point):
+        """
+        Distance between a line and an inhomogeneous point
+        Assert:
+        - Point is inhomogeneous
+        """
+        a, b, c = *line.vector
+        x0, y0 = *point.vector
+        return abs(a*x0 + b*y0 + c) + sqrt(a**2 + b**2)
