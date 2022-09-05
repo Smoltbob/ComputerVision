@@ -36,7 +36,7 @@ class TestComplex(unittest.TestCase):
         conjugate_conjugate = conjugate.conjugate()
         self.assertEqual(self.cplx1, conjugate_conjugate)
         
-        # The conjugate affects the angle, modulo 2
+        # The conjugate affects the angle, modulo 2pi
         self.assertEqual(self.cplx1.magnitude(), conjugate.magnitude())
         self.assertEqual(self.cplx1.angle(), -conjugate.angle())
 
