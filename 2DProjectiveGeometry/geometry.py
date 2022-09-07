@@ -8,7 +8,7 @@ class InhomogeneousPoint():
         self.vector = vector
 
     # TODO this should be common to both classes
-    def __repr__(self) -> str:
+    def __repr__(self):
         return f"x: {self.vector[0]}, y: {self.vector[1]}"
 
     def plot(self, ax, color = "r"):
@@ -90,8 +90,8 @@ class Line():
         Line from two inhomogeneous points
         Assert: points are inhomogeneous
         """
-        x0, y0 = *pt1.vector
-        x1, y1 = *pt2.vector
+        x0, y0 = pt1.vector
+        x1, y1 = pt2.vector
         a = y0 - y1
         b = x1 - x0
         c = y1*x0 - y0*x1
@@ -180,6 +180,6 @@ class Utils():
         Assert:
         - Point is inhomogeneous
         """
-        a, b, c = *line.vector
-        x0, y0 = *point.vector
+        a, b, c = line.vector
+        x0, y0 = point.vector
         return abs(a*x0 + b*y0 + c) + sqrt(a**2 + b**2)

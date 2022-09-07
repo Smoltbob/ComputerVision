@@ -41,9 +41,5 @@ class TestComplex(unittest.TestCase):
         self.assertEqual(self.cplx1.angle(), -conjugate.angle())
 
 
-
-
-
-
 if __name__ == '__main__':
     unittest.main()

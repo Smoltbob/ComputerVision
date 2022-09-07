@@ -2,7 +2,7 @@ import unittest
 import sys
 sys.path.append("..")
 
-from geometry import Line, InhomogeneousPoint
+from geometry import Line
 
 
 class TestLine(unittest.TestCase):
@@ -15,13 +15,15 @@ class TestLine(unittest.TestCase):
 
         
     def test_defaultConstructor(self):
-        self.assertEqual(self.vector, [self.a0, self.b0, self.c0])
-
+        self.assertEqual(self.line1.vector, [self.a0, self.b0, self.c0])
 
     def test_contains(self):
         """
         Use the line equation to get a point that is
         on the line
         """
-        point_on_line =
+        point_on_line = 0
+        pass
 
+if __name__ == '__main__':
+    unittest.main()
