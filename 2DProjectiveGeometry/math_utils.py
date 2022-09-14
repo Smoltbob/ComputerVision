@@ -1,4 +1,4 @@
-from math import sqrt
+from math import sqrt as _sqrt
 
 
 def dot(vecA, vecB):
@@ -36,3 +36,6 @@ def norm(vec):
 def normalize(vec):
     n = norm(vec)
     return [x / n for x in vec]
+
+def sqrt(x):
+    return _sqrt(x)

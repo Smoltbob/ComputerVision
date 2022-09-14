@@ -1,5 +1,5 @@
 import skspatial.objects as so
-from math_utils import cross, dot
+from math_utils import cross, dot, sqrt
 from mpl_toolkits.mplot3d import Axes3D
 class InhomogeneousPoint(): 
     def __init__(self, vector):
@@ -11,12 +11,19 @@ class InhomogeneousPoint():
     def __repr__(self):
         return f"x: {self.vector[0]}, y: {self.vector[1]}"
 
+    # TODO homogeneize function notation (camel case ?)
+    def to_Homogeneous(self):
+        return HomogeneousPoint([self.vector[0], self.vector[1], 1])
+
     def plot(self, ax, color = "r"):
         """
         Plots the inhomogeneous point as a point in R2
         """
-        _point = so.Point(self.vector)
-        _point.plot_2d(ax, c = color)
+        if isinstance(ax, Axes3D):
+            self.to_Homogeneous().plot(ax, color)
+        else: # we assume we have a valid normal axis
+            _point = so.Point(self.vector)
+            _point.plot_2d(ax, c = color)
 
 
 class HomogeneousPoint():
@@ -81,6 +88,7 @@ class Line():
     """
 
     # TODO also init directly from vector
+    # TODO add direction of line
     def __init__(self, vector):
         assert(len(vector) == 3)
         self.vector = vector
@@ -114,59 +122,20 @@ class Line():
         """
         return HomogeneousPoint([self.vector[1], -self.vector[0], 0])
 
-    def __plot3d(self, ax3d, color, show_plane):
+    def project_inhomogeneous_point(self, point):
         """
-        Plot the line as a plane that goes through the origin
+        Using the equation (vector) form of the line, project a point onto it.
+
+        assert: the point must be inhomogeneous
         """
-        origin = [0, 0, 0]
-        # TODO use a more generic solution
-        if self.vector[0] != 0:
-            y = 0
-            x = (-self.vector[2] - (self.vector[1] * y)) / self.vector[0]
-            vertex1 = [x, y, 1]
-            y = 1
-            x = (-self.vector[2] - (self.vector[1] * y)) / self.vector[0]
-            vertex2 = [x, y, 1]
-        elif self.vector[1] != 0:
-            x = 0
-            y = (-self.vector[2] - (self.vector[0] * x)) / self.vector[1]
-            vertex1 = [x, y, 1]
-            x = 1
-            y = (-self.vector[2] - (self.vector[0] * x)) / self.vector[1]
-            vertex2 = [x, y, 1]
-        else:
-            assert(False, "Cannot plot degenerate line")
+        x0, y0 = point.vector
+        a, b, c = self.vector
 
-        if show_plane:
-            plane = so.Plane.from_points(origin, vertex1, vertex2)
-            plane.plot_3d(ax3d, lims_x = (-2, 2), lims_y = (-2, 2), color = color, alpha = 0.2)
+        den = a ** 2 + b **2
+        x =  (b * (b*x0 - a*y0) -a * c) / den
+        y = (a*(-b*x0 + a*y0)-b*c) /den
 
-        line = so.Line(point = vertex1, direction = [self.vector[1], -self.vector[0], 0])
-        line.plot_3d(ax3d, t_1 = -1, t_2 = 1, c = color)
-
-    def __plot2d(self, ax, color):
-        """
-        Plot the line as a plane that goes through the origin
-        """
-        if self.vector[0] != 0:
-            y = 0
-            x = (-self.vector[2] - (self.vector[1] * y)) / self.vector[0]
-            vertex1 = [x, y]
-        elif self.vector[1] != 0:
-            x = 0
-            y = (-self.vector[2] - (self.vector[0] * x)) / self.vector[1]
-            vertex1 = [x, y]
-        else:
-            assert(False, "Cannot plot degenerate line")
-        
-        line =  so.Line(point = vertex1, direction = [self.vector[1], -self.vector[0]])
-        line.plot_2d(ax, t_1 = -1, t_2 = 1, c = color)
-
-    def plot(self, ax, color = "r", show_plane = True):
-        if isinstance(ax, Axes3D):
-            self.__plot3d(ax, color, show_plane)
-        else:
-            self.__plot2d(ax, color)
+        return InhomogeneousPoint([x, y])
 
 
 class Utils():
