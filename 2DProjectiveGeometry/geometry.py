@@ -1,6 +1,12 @@
 import skspatial.objects as so
-from math_utils import cross, dot, sqrt
+from math_utils import cross, dot, sqrt, norm
 from mpl_toolkits.mplot3d import Axes3D
+
+"""
+Design philosophy:
+- Most operations are done Homogeneously,
+but we can make inhomogeneous if needed
+"""
 class InhomogeneousPoint(): 
     def __init__(self, vector):
         assert(isinstance(vector, list))
@@ -44,6 +50,10 @@ class HomogeneousPoint():
 
     def __repr__(self) -> str:
         return f"x: {self.vector[0]}, y: {self.vector[1]}, z: {self.vector[2]}"
+
+    def distance_from(self, point):
+        difference = [x - y for x, y in zip(self.vector, point.vector)]
+        return norm(difference)
 
     def join(self, lineA):
         '''
