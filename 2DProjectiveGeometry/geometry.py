@@ -1,5 +1,5 @@
 import skspatial.objects as so
-from math_utils import cross, dot, sqrt, norm
+from math_utils import cross, dot, sqrt, norm, atan2
 from mpl_toolkits.mplot3d import Axes3D
 
 """
@@ -54,6 +54,16 @@ class HomogeneousPoint():
     def distance_from(self, point):
         difference = [x - y for x, y in zip(self.vector, point.vector)]
         return norm(difference)
+
+    def angle(self):
+        """
+        TODO
+        angle of the point as defined in the trigonometric circle
+        """
+        _inhom = self.toInhomogeneous()
+        return atan2(_inhom.vector[1], _inhom.vector[0])
+
+    def angle_from(self,)
 
     def join(self, lineA):
         '''

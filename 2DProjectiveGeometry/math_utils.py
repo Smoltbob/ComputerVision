@@ -1,5 +1,5 @@
 from math import sqrt as _sqrt
-
+from math import atan2 as _atan2
 
 def dot(vecA, vecB):
     """
@@ -39,3 +39,6 @@ def normalize(vec):
 
 def sqrt(x):
     return _sqrt(x)
+
+def atan2(x, y):
+    return _atan2(x, y)
