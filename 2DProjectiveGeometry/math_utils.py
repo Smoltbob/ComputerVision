@@ -1,5 +1,8 @@
 from math import sqrt as _sqrt
+from math import sin as _sin
+from math import cos as _cos
 from math import atan2 as _atan2
+
 
 def dot(vecA, vecB):
     """
@@ -42,3 +45,9 @@ def sqrt(x):
 
 def atan2(x, y):
     return _atan2(x, y)
+
+def sin(x):
+    return _sin(x)
+
+def cos(x):
+    return _cos(x)
