@@ -17,7 +17,7 @@ class InhomogeneousPoint():
     def __repr__(self):
         return f"x: {self.vector[0]}, y: {self.vector[1]}"
 
-    # TODO homogeneize function notation (camel case ?)
+    # TODO homogenize function notation (camel case ?)
     def to_Homogeneous(self):
         return HomogeneousPoint([self.vector[0], self.vector[1], 1])
 
@@ -63,7 +63,8 @@ class HomogeneousPoint():
         _inhom = self.toInhomogeneous()
         return atan2(_inhom.vector[1], _inhom.vector[0])
 
-    def angle_from(self,)
+    def angle_from(self, hpoint):
+        pass
 
     def join(self, lineA):
         '''
@@ -164,6 +165,7 @@ class Utils():
     """
 
     def distance_line_point(line, point):
+        # TODO create two functions in Line and Point that use this
         """
         Distance between a line and an inhomogeneous point
         Assert:
@@ -171,4 +173,4 @@ class Utils():
         """
         a, b, c = line.vector
         x0, y0 = point.vector
-        return abs(a*x0 + b*y0 + c) + sqrt(a**2 + b**2)
+        return abs(a*x0 + b*y0 + c) / sqrt(a**2 + b**2)
