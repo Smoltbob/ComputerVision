@@ -2,6 +2,9 @@ from math import sqrt as _sqrt
 from math import sin as _sin
 from math import cos as _cos
 from math import atan2 as _atan2
+from math import exp as _exp
+
+pi = 3.1415
 
 
 def dot(vecA, vecB):
@@ -16,7 +19,6 @@ def dot(vecA, vecB):
         total += a * b
     return total
 
-
 def cross(vecA, vecB):
     """
     Note this is the 3D version of the exterior product = wedge operator
@@ -27,14 +29,11 @@ def cross(vecA, vecB):
     c = vecA[0] * vecB[1] - vecA[1] * vecB[0]
     return [a, b, c]
 
-
 def squaredNorm(vec):
     return sum([x**2 for x in vec])
 
-
 def norm(vec):
     return sqrt(squaredNorm(vec))
-
 
 def normalize(vec):
     n = norm(vec)
@@ -51,3 +50,6 @@ def sin(x):
 
 def cos(x):
     return _cos(x)
+
+def exp(x):
+    return _exp(x)
