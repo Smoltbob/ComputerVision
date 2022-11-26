@@ -43,3 +43,6 @@ class S1:
         TODO enforce unity
         """
         return self.angle()
+
+    def norm(self):
+        return self.z.magnitude()

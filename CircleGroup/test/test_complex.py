@@ -1,7 +1,5 @@
 import unittest
-import sys
-sys.path.append("..")
-import Complex
+import CircleGroup.Complex as Complex
 
 class TestComplex(unittest.TestCase):
 
@@ -40,6 +38,11 @@ class TestComplex(unittest.TestCase):
         self.assertEqual(self.cplx1.magnitude(), conjugate.magnitude())
         self.assertEqual(self.cplx1.angle(), -conjugate.angle())
 
+    def test_angle(self):
+        cplx_90deg = Complex.Complex(0, 1)
+        return True
+
+ 
 
 if __name__ == '__main__':
     unittest.main()
