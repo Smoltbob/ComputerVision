@@ -2,6 +2,11 @@ import skspatial.objects as so
 from math_utils import cross, dot, sqrt, norm, atan2
 from mpl_toolkits.mplot3d import Axes3D
 
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
 """
 Design philosophy:
 - Most operations are done Homogeneously,
