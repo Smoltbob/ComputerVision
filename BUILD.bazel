@@ -1,0 +1,6 @@
+load("@rules_python//python:pip.bzl", "compile_pip_requirements")
+
+compile_pip_requirements(
+    # base name for generated targets, typically "requirements"
+    name = "requirements",
+)

@@ -5,3 +5,18 @@ http_archive(
     strip_prefix = "rules_python-0.14.0",
     url = "https://github.com/bazelbuild/rules_python/archive/refs/tags/0.14.0.tar.gz",
 )
+
+# Only needed for PIP support:
+load("@rules_python//python:pip.bzl", "pip_parse")
+
+# Requirements for notebooks
+pip_parse(
+    name = "notebooks",
+    requirements = "//:requirements.txt"
+)
+
+load(
+    "@notebooks//:requirements.bzl",
+    "install_deps"
+)
+install_deps()

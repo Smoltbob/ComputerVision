@@ -1,0 +1,21 @@
+py_library(
+    name = "LinearInterpolation",
+    srcs = ["LinearInterpolation.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//2DProjectiveGeometry:Geometry"
+    ]
+)
+
+load("@notebooks//:requirements.bzl", "requirement")
+
+
+py_binary(
+    name = "jupyter",
+    srcs = ["jupyter.py"],
+    deps = [
+        "//BilinearInterpolation:LinearInterpolation",
+        requirement("notebook")
+    ]
+)
+
