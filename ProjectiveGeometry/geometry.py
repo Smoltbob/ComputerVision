@@ -1,5 +1,5 @@
 import skspatial.objects as so
-from math_utils import cross, dot, sqrt, norm, atan2
+from ProjectiveGeometry.math_utils import cross, dot, sqrt, norm, atan2
 from mpl_toolkits.mplot3d import Axes3D
 
 class Point:

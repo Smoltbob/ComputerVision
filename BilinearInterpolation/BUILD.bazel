@@ -3,7 +3,7 @@ py_library(
     srcs = ["LinearInterpolation.py"],
     visibility = ["//visibility:public"],
     deps = [
-        "//2DProjectiveGeometry:Geometry"
+        "//ProjectiveGeometry:Geometry"
     ]
 )
 
@@ -15,6 +15,7 @@ py_binary(
     srcs = ["jupyter.py"],
     deps = [
         "//BilinearInterpolation:LinearInterpolation",
+        "//ProjectiveGeometry:Geometry",
         requirement("notebook")
     ]
 )
