@@ -14,9 +14,8 @@ py_binary(
     name = "jupyter",
     srcs = ["jupyter.py"],
     deps = [
-        "//BilinearInterpolation:LinearInterpolation",
+        "//Interpolation:LinearInterpolation",
         "//ProjectiveGeometry:Geometry",
         requirement("notebook")
     ]
 )
-

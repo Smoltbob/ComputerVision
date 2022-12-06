@@ -1,0 +1,9 @@
+py_test(
+    name = "test_LinearInterpolator",
+    srcs = ["test_LinearInterpolator.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//Interpolation:LinearInterpolation",
+        "//ProjectiveGeometry:Geometry"
+    ]
+)

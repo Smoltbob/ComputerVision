@@ -1,6 +1,7 @@
-import skspatial.objects as so
+import matplotlib
+#import skspatial.objects as so
 from ProjectiveGeometry.math_utils import cross, dot, sqrt, norm, atan2
-from mpl_toolkits.mplot3d import Axes3D
+#from mpl_toolkits.mplot3d import Axes3D
 
 class Point:
     def __init__(self, x, y):
