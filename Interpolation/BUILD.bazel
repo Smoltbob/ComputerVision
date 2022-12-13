@@ -7,6 +7,16 @@ py_library(
     ]
 )
 
+py_library(
+    name = "BilinearInterpolation",
+    srcs = ["BilinearInterpolation.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//ProjectiveGeometry:Geometry",
+        "//Interpolation:LinearInterpolation",
+    ]
+)
+
 load("@notebooks//:requirements.bzl", "requirement")
 
 
@@ -15,6 +25,8 @@ py_binary(
     srcs = ["jupyter.py"],
     deps = [
         "//Interpolation:LinearInterpolation",
-        requirement("notebook")
+        "//Interpolation:BilinearInterpolation",
+        requirement("notebook"),
+        requirement("matplotlib")
     ]
 )
