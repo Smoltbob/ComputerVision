@@ -22,7 +22,7 @@ load("@notebooks//:requirements.bzl", "requirement")
 
 py_binary(
     name = "jupyter",
-    srcs = ["jupyter.py"],
+    srcs = ["//:jupyter"],
     deps = [
         "//Interpolation:LinearInterpolation",
         "//Interpolation:BilinearInterpolation",

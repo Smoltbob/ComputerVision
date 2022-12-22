@@ -1,6 +1,14 @@
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 
+# Used to allow using requirement(pip_package)
 compile_pip_requirements(
     # base name for generated targets, typically "requirements"
     name = "requirements",
+)
+
+# Used to enable global acces to the misc/jupyter.py file used to start jupyter from Bazel
+filegroup(
+    name = "jupyter",
+    srcs = ["misc/jupyter.py"],
+    visibility = ["//visibility:public"]
 )

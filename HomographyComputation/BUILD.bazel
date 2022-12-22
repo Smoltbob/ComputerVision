@@ -1,0 +1,11 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
+py_binary(
+    name = "jupyter",
+    srcs = ["//:jupyter"],
+    deps = [
+        "//Solvers:DLT",
+        requirement("notebook"),
+        requirement("matplotlib")
+    ]
+)
