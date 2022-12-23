@@ -4,8 +4,9 @@ py_binary(
     name = "jupyter",
     srcs = ["//:jupyter"],
     deps = [
-        "//Solvers:DLT",
+        "//lib/Solvers:DLT",
         requirement("notebook"),
-        requirement("matplotlib")
+        requirement("matplotlib"),
+        requirement("scipy")
     ]
 )

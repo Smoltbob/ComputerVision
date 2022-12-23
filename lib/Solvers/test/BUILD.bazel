@@ -1,0 +1,8 @@
+py_test(
+    name = "test_dlt",
+    srcs = ["test_dlt.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//lib/Solvers:DLT"
+    ]
+)
