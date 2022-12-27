@@ -7,13 +7,9 @@ def normalize(points):
     """
     Normalizes / Pre-conditions the set of points for the DLT.
     The points are 2D homogeneous.
-    """
-    """
-    Normalizes / Pre-conditions the set of points for the DLT.
-    The points are homogeneous.
 
     Computes a 3x3 matrix T such that with P = T @ points 
-     1. The points are translated so that their centroid 
+    1. The points are translated so that their centroid 
     is at the origin
     2. The points are scaled so that the average distance
     from the origin is sqrt(2)
@@ -28,7 +24,6 @@ def normalize(points):
     
     a = np.linalg.norm(points_translated[:, 0:2], axis = 1).mean()
  
-
     factor = np.sqrt(2) / a
     
     norm_T = np.eye(3) 
