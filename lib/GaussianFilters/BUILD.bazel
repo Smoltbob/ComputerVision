@@ -1,0 +1,20 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
+py_library(
+    name = "ABG",
+    srcs = ["alpha_beta_gamma.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+    ]
+)
+
+py_binary(
+    name = "jupyter",
+    srcs = ["//:jupyter"],
+    deps = [
+        "//lib/GaussianFilters:ABG",
+        requirement("notebook"),
+        requirement("matplotlib"),
+        requirement("scipy")
+    ]
+)
