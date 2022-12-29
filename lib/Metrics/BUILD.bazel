@@ -1,0 +1,20 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
+py_library(
+    name = "Metrics",
+    srcs = ["univariate_metrics.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+    ]
+)
+
+py_binary(
+    name = "jupyter",
+    srcs = ["//:jupyter"],
+    deps = [
+        "//lib/Metrics:Metrics",
+        requirement("notebook"),
+        requirement("matplotlib"),
+        requirement("scipy")
+    ]
+)

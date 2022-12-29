@@ -1,0 +1,8 @@
+py_test(
+    name = "test_univariate_metrics",
+    srcs = ["test_univariate_metrics.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//lib/Metrics:Metrics"
+    ]
+)
