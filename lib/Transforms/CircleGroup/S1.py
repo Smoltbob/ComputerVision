@@ -1,7 +1,4 @@
-import sys
-
-sys.path.append("../Complex")
-from Complex import *
+from lib.Transforms.CircleGroup.Complex import *
 from math import cos, sin
 
 class S1:

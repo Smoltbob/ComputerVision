@@ -1,0 +1,14 @@
+py_library(
+    name = "Complex",
+    visibility = ["//visibility:public"],
+    srcs = ["Complex.py"]
+)
+
+py_library(
+    name = "S1",
+    visibility = ["//visibility:public"],
+    srcs = ["S1.py"],
+    deps = [
+        "//lib/Transforms/CircleGroup:Complex"
+    ]
+)
