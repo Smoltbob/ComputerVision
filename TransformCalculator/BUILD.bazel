@@ -5,6 +5,7 @@ py_binary(
     srcs = ["//:jupyter"],
     deps = [
         "//lib/Transforms/CircleGroup:S1",
+        "//lib/Transforms/Interface:Transform",
         requirement("notebook"),
         requirement("matplotlib")
     ]
