@@ -2,7 +2,7 @@ load("@notebooks//:requirements.bzl", "requirement")
 
 py_library(
     name = "Metrics",
-    srcs = ["univariate_metrics.py"],
+    srcs = ["L_estimators.py"],
     visibility = ["//visibility:public"],
     deps = [
     ]
