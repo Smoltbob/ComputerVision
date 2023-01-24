@@ -1,0 +1,18 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
+py_library(
+    name = "SO3",
+    visibility = ["//visibility:public"],
+    srcs = ["SO3.py"],
+    deps = []
+)
+
+py_binary(
+    name = "jupyter",
+    srcs = ["//:jupyter"],
+    deps = [
+        "//lib/Transforms/SO3:SO3",
+        requirement("notebook"),
+        requirement("matplotlib"),
+    ]
+)

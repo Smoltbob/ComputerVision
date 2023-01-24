@@ -1,0 +1,15 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
+
+py_binary(
+    name = "jupyter",
+    srcs = ["//:jupyter"],
+    deps = [
+        "//lib/Math:Constants",
+        "//lib/Math:Math_utils",
+        "//lib/Transforms/CircleGroup:S1",
+        requirement("scipy"),
+        requirement("notebook"),
+        requirement("matplotlib"),
+    ]
+)

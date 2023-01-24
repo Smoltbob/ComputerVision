@@ -9,7 +9,7 @@ class S1:
         around the origin.
         """
         self.z = Complex(cos(angle), sin(angle))
-        assert(self.z.magnitude() == 1) # TODO floating point
+        assert(self.z.magnitude() - 1 < 1e-9) # TODO floating point
 
     def __repr__(self):
         return f"S1: {self.log_map()} rads"
