@@ -1,8 +1,13 @@
 load("@notebooks//:requirements.bzl", "requirement")
+load("@pybind11_bazel//:build_defs.bzl", "pybind_library", "pybind_extension")
+load("//:misc/rules.bzl", "pybind_module")
 
 py_library(
     name = "Metrics",
-    srcs = ["L_estimators.py"],
+    srcs = [
+        "L_estimators.py",
+        "M_estimators.py"
+        ],
     visibility = ["//visibility:public"],
     deps = [
     ]
@@ -13,8 +18,15 @@ py_binary(
     srcs = ["//:jupyter"],
     deps = [
         "//lib/Metrics:Metrics",
+        "//lib/Metrics:example",
         requirement("notebook"),
         requirement("matplotlib"),
         requirement("scipy")
     ]
+)
+
+pybind_module(
+    name = "example",
+    srcs = ["L_estimator.cpp"],
+    visibility = ["//visibility:public"],
 )

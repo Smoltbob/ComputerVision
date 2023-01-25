@@ -20,3 +20,32 @@ load(
     "install_deps"
 )
 install_deps()
+
+
+# Setup pybind
+load("@rules_python//python:repositories.bzl", "python_register_toolchains")
+
+# If running from outside (via ./bazel-bin/...), the env and bazel python versions must match
+python_register_toolchains(
+    name = "python39",
+    # Available versions are listed in @rules_python//python:versions.bzl.
+    # We recommend using the same version your team is already standardized on.
+    python_version = "3.9",
+)
+load("@python39//:defs.bzl", "interpreter")
+
+
+http_archive(
+  name = "pybind11_bazel",
+  strip_prefix = "pybind11_bazel-faf56fb3df11287f26dbc66fdedf60a2fc2c6631",
+  urls = ["https://github.com/pybind/pybind11_bazel/archive/faf56fb3df11287f26dbc66fdedf60a2fc2c6631.zip"],
+)
+# We still require the pybind library.
+http_archive(
+  name = "pybind11",
+  build_file = "@pybind11_bazel//:pybind11.BUILD",
+  strip_prefix = "pybind11-2.10.3",
+  urls = ["https://github.com/pybind/pybind11/archive/v2.10.3.tar.gz"],
+)
+load("@pybind11_bazel//:python_configure.bzl", "python_configure")
+python_configure(name = "local_config_python", python_interpreter_target = interpreter) # interpreter is required so that py_library() gets a PyInfo
