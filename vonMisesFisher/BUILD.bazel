@@ -6,7 +6,8 @@ py_library(
     srcs = ["vonMisesFisher.py"],
     deps = [  
         "//lib/Math:Constants",
-        "//lib/Math:Math_utils"
+        "//lib/Math:Math_utils",
+        "//lib/Transforms/CircleGroup:S1",
         ]
 )
 
@@ -14,10 +15,7 @@ py_library(
 py_binary(
     name = "jupyter",
     srcs = ["//:jupyter"],
-    deps = [
-        "//lib/Math:Constants",
-        "//lib/Math:Math_utils",
-        "//lib/Transforms/CircleGroup:S1",
+    deps = [        
         "//vonMisesFisher:vMF",
         requirement("scipy"),
         requirement("notebook"),
