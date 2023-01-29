@@ -4,7 +4,9 @@ py_library(
     name = "SO3",
     visibility = ["//visibility:public"],
     srcs = ["SO3.py"],
-    deps = []
+    deps = [
+        "//lib/Math:Quaternions"
+    ]
 )
 
 py_binary(
@@ -12,6 +14,8 @@ py_binary(
     srcs = ["//:jupyter"],
     deps = [
         "//lib/Transforms/SO3:SO3",
+        "//vonMisesFisher:vMF",
+        requirement("scipy"),
         requirement("notebook"),
         requirement("matplotlib"),
     ]

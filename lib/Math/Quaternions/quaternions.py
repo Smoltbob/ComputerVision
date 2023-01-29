@@ -1,8 +1,4 @@
-import sys
-
-sys.path.append("../2DProjectiveGeometry")
-from math_utils import norm, normalize
-from math import cos, sin, acos
+from lib.Math.math_utils import norm, normalize, cos, sin, acos
 
 # todo: SO2, complex
 

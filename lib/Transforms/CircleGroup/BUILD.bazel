@@ -1,3 +1,5 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
 py_library(
     name = "Complex",
     visibility = ["//visibility:public"],
@@ -10,5 +12,16 @@ py_library(
     srcs = ["S1.py"],
     deps = [
         "//lib/Transforms/CircleGroup:Complex"
+    ]
+)
+
+py_binary(
+    name = "jupyter",
+    srcs = ["//:jupyter"],
+    deps = [
+        "//lib/Transforms/CircleGroup:S1",
+        requirement("scipy"),
+        requirement("notebook"),
+        requirement("matplotlib"),
     ]
 )

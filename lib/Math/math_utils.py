@@ -1,6 +1,7 @@
 from math import sqrt as _sqrt
 from math import sin as _sin
 from math import cos as _cos
+from math import acos as _acos
 from math import atan2 as _atan2
 from math import exp as _exp
 from math import log as _log
@@ -51,6 +52,9 @@ def sin(x):
 
 def cos(x):
     return _cos(x)
+
+def acos(x):
+    return _acos(x)
 
 def exp(x):
     return _exp(x)

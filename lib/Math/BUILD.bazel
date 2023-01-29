@@ -9,3 +9,23 @@ py_library(
     srcs = ["math_utils.py"],
     visibility = ["//visibility:public"]
 )
+
+py_library(
+    name = "RotationUtils",
+    srcs = ["RotationUtils/rotation_utils.py"],
+    deps = [
+        "//lib/Math:Math_utils",
+    ],
+    visibility = ["//visibility:public"]
+)
+
+
+py_library(
+    name = "Quaternions",
+    srcs = ["Quaternions/quaternions.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//lib/Math:Math_utils",
+    ]
+)
+
