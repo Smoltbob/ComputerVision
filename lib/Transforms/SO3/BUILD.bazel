@@ -9,6 +9,16 @@ py_library(
     ]
 )
 
+py_library(
+    name = "SO3Utils",
+    visibility = ["//visibility:public"],
+    srcs = ["SO3_utils.py"],
+    deps = [
+        "//lib/Transforms/SO3:SO3",
+    ]
+)
+
+
 py_binary(
     name = "jupyter",
     srcs = ["//:jupyter"],

@@ -1,7 +1,4 @@
-import sys
-
-sys.path.append("../SO3")
-from SO3 import *
+from lib.Transforms.SO3 import SO3
 import numpy as np
 
 
@@ -18,7 +15,7 @@ def SO3_median(rotation_list: list, threshold=1e-6, S_t=None):
             numerator += xi / X
             denumerator += 1 / X
         delta = numerator / denumerator
-        S_t = so3(delta).exp_map_euler() @ S_t
+        S_t = SO3.so3(delta).exp_map_euler() @ S_t
 
         if np.linalg.norm(delta) < threshold:
             break
@@ -29,4 +26,4 @@ def SO3_median(rotation_list: list, threshold=1e-6, S_t=None):
 def SO3_mean(rotations):
     # Correct ?
     v_is = np.array([x.log_map().w for x in rotations])
-    return so3(np.mean(v_is, axis=0)).exp_map_euler()
+    return SO3.so3(np.mean(v_is, axis=0)).exp_map_euler()
