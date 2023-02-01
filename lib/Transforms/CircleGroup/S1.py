@@ -1,5 +1,6 @@
 from lib.Transforms.CircleGroup.Complex import *
-from math import cos, sin
+from lib.Math.math_utils import cos, sin
+from lib.Math.constants import pi
 
 class S1:
     def __init__(self, angle = 0):
@@ -17,6 +18,7 @@ class S1:
     def __matmul__(self, rhs):
         tmp = S1()
         tmp.z = self.z * rhs.z
+        assert(tmp.z.magnitude() - 1 < 1e-9)
         return tmp
 
     def angle(self):
@@ -26,6 +28,7 @@ class S1:
         # TODO constructor from z / build S1 with -angle
         tmp = S1()
         tmp.z = self.z.inverse()
+        assert(tmp.z.magnitude() - 1 < 1e-9)
         return tmp
 
     def exp_map(rot_angle):
@@ -43,3 +46,24 @@ class S1:
 
     def norm(self):
         return self.z.magnitude()
+
+    def distance_from(self, rhs: "S1"):
+        """
+        Returns the signed distance between two angles,
+        ie a value in (-pi, pi] that is the minimum angular displacement
+        from rhs to self.
+        """
+        theta1 = self.angle()
+        theta2 = rhs.angle()
+
+        diff_t2_t1 = theta2 - theta1
+
+        if diff_t2_t1 > -pi and diff_t2_t1 <= pi:
+            return diff_t2_t1
+        elif diff_t2_t1 > pi:
+            return diff_t2_t1 - 2 *pi
+        else: # diff_t2_t1 <= -pi
+            return diff_t2_t1 + 2*pi
+
+    def geodesic_ditance(self, rhs):
+        return abs(self.distance_from(rhs))

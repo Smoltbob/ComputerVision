@@ -11,7 +11,9 @@ py_library(
     visibility = ["//visibility:public"],
     srcs = ["S1.py"],
     deps = [
-        "//lib/Transforms/CircleGroup:Complex"
+        "//lib/Transforms/CircleGroup:Complex",
+        "//lib/Math:Math_utils",
+        "//lib/Math:Constants",
     ]
 )
 
