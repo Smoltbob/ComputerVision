@@ -1,4 +1,4 @@
 notebook==6.5.2
-matplotlib==3.6.2
+matplotlib==3.7.0rc1
 scikit-spatial==6.6.0
 scipy==1.9.3

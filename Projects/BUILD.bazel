@@ -1,0 +1,14 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
+py_binary(
+    name = "jupyter",
+    srcs = ["//:jupyter"],
+    deps = [        
+        "//vonMisesFisher:vMF",
+        "//lib/Transforms/SO3:SO3",
+        "//lib/Transforms/SO3:SO3Utils",
+        requirement("scipy"),
+        requirement("notebook"),
+        requirement("matplotlib"),
+    ]
+)
