@@ -1,7 +1,5 @@
 load("@notebooks//:requirements.bzl", "requirement")
 
-
-
 py_library(
     name = "Geometry",
     srcs = ["geometry.py"],
@@ -9,6 +7,6 @@ py_library(
     deps = [
         requirement("scikit-spatial"),
         requirement("matplotlib"),
-        "//ProjectiveGeometry:math_utils"
+        "//lib/Math:Math_utils"
     ]
 )

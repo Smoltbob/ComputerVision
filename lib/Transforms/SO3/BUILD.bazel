@@ -5,7 +5,9 @@ py_library(
     visibility = ["//visibility:public"],
     srcs = ["SO3.py"],
     deps = [
-        "//lib/Math:Quaternions"
+        "//lib/Math:Quaternions",
+        "//lib/Math:Constants",
+        "//lib/Math:Math_utils"
     ]
 )
 

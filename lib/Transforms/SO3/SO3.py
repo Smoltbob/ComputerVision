@@ -1,5 +1,7 @@
 import numpy as np
 from lib.Math.Quaternions.quaternions import *
+from lib.Math.constants import pi
+from lib.Math.math_utils import sqrt, atan2, cos, sin
 
 
 def skew(v):
@@ -12,6 +14,8 @@ def vee(W):
 
 class SO3:
     def __init__(self, R=None):
+        if R is None:
+            R = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
         self.R = R
 
     def __repr__(self):
@@ -23,14 +27,14 @@ class SO3:
 
     def ypr(self, units="deg"):
         rot_matrix = self.R
-        yaw = np.arctan2(rot_matrix[1, 0], rot_matrix[0, 0])
-        pitch = np.arctan2(
-            -rot_matrix[2, 0], np.sqrt(rot_matrix[2, 1] ** 2 + rot_matrix[2, 2] ** 2)
+        yaw = atan2(rot_matrix[1, 0], rot_matrix[0, 0])
+        pitch = atan2(
+            -rot_matrix[2, 0], sqrt(rot_matrix[2, 1] ** 2 + rot_matrix[2, 2] ** 2)
         )
-        roll = np.arctan2(rot_matrix[2, 1], rot_matrix[2, 2])
+        roll = atan2(rot_matrix[2, 1], rot_matrix[2, 2])
 
         if units == "deg":
-            rad_2_deg = 180 / np.pi
+            rad_2_deg = 180 / pi
             return rad_2_deg * yaw, rad_2_deg * pitch, rad_2_deg * roll
         return yaw, pitch, roll
 
@@ -41,7 +45,7 @@ class SO3:
         """
         R = self.R
         A = (R - R.T) / 2
-        norm = np.sqrt(-np.trace(A @ A) / 2)
+        norm = sqrt(-np.trace(A @ A) / 2)
         skew_matrix = ((np.arcsin(norm)) / norm) * A
         return so3(vee(skew_matrix))
 
@@ -82,8 +86,8 @@ class so3:
         y = w[1]
         z = w[2]
 
-        c = np.cos(theta / 2)
-        s = np.sin(theta / 2)
+        c = cos(theta / 2)
+        s = sin(theta / 2)
 
         exp = [
             [

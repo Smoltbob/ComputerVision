@@ -1,12 +1,11 @@
 load("@notebooks//:requirements.bzl", "requirement")
 
-
 py_test(
-    name = "test_univariate_metrics",
-    srcs = ["test_univariate_metrics.py"],
+    name = "testSO3",
+    srcs = ["testSO3.py"],
     visibility = ["//visibility:public"],
     deps = [
-        "//lib/Metrics:Metrics",
+        "//lib/Transforms/SO3:SO3",
         requirement("numpy")
     ]
 )

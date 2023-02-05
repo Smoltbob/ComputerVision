@@ -4,6 +4,6 @@ py_test(
     name = "test_complex",
     srcs = ["test_complex.py"],
     deps = [
-        "//CircleGroup:Complex"
+        "//lib/Transforms/CircleGroup:Complex"
     ]
 )

@@ -4,6 +4,6 @@ py_test(
     visibility = ["//visibility:public"],
     deps = [
         "//Interpolation:LinearInterpolation",
-        "//ProjectiveGeometry:Geometry"
+        "//ProjectiveGeometry:Geometry",
     ]
 )

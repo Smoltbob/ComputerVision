@@ -1,5 +1,5 @@
 import unittest
-import CircleGroup.Complex as Complex
+import lib.Transforms.CircleGroup.Complex as Complex
 
 class TestComplex(unittest.TestCase):
 
