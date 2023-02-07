@@ -2,8 +2,8 @@ load("@notebooks//:requirements.bzl", "requirement")
 
 
 py_test(
-    name = "test_univariate_metrics",
-    srcs = ["test_univariate_metrics.py"],
+    name = "test_L_estimators",
+    srcs = ["test_L_estimators.py"],
     visibility = ["//visibility:public"],
     deps = [
         "//lib/Metrics:Metrics",

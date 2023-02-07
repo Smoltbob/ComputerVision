@@ -18,14 +18,22 @@ def Q1(data: list):
     # Let the length of the data be 2n or 2n+1
     # Q1 = median of the n smallest values.
     n = len(data) // 2
+
+    # If we have and odd amount of elements, include the median.
+    if len(data) % 2 == 1:
+        n+=1
     return median(data[:n])
 
 def Q3(data: list):
     assert len(data) > 0, "List is empty"
     data = sorted(data)
     # Let the length of the data be 2n or 2n+1
-    # Q1 = median of the n largest values.
+    # Q3 = median of the n largest values.
     n = len(data) // 2
+
+    # If we have and odd amount of elements, include the median.
+    if len(data) % 2 == 1:
+        n-=1
     return median(data[n:])
     
 # Robust estimates of scale
