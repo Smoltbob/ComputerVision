@@ -1,6 +1,6 @@
 import matplotlib
 #import skspatial.objects as so
-from lib.Math.Math_utils import cross, dot, sqrt, norm, atan2
+from lib.Math.math_utils import cross, dot, sqrt, norm, atan2
 #from mpl_toolkits.mplot3d import Axes3D
 
 class Point:

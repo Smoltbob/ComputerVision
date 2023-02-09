@@ -1,8 +1,11 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
 py_test(
     name = "test_dlt",
     srcs = ["test_dlt.py"],
     visibility = ["//visibility:public"],
     deps = [
-        "//lib/Solvers:DLT"
+        "//lib/Solvers:DLT",
+        requirement("numpy")
     ]
 )
