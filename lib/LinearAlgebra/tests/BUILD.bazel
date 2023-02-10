@@ -1,0 +1,11 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
+py_test(
+    name = "test_matrix",
+    srcs = ["test_matrix.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//lib/LinearAlgebra:matrix",
+        requirement("numpy")
+    ]
+)

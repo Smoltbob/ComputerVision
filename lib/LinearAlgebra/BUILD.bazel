@@ -1,0 +1,29 @@
+load("@notebooks//:requirements.bzl", "requirement")
+load("//:misc/rules.bzl", "cpp_py_library", "pybind_module")
+
+
+pybind = True
+
+py_library(
+    name = "matrix" if not pybind else "none_py",
+    visibility = ["//visibility:public"],
+    srcs = ["matrix.py"]
+)
+
+
+pybind_module(
+    name = "matrix" if pybind else "none_cpp",
+    srcs = ["matrix.cpp"],
+    visibility = ["//visibility:public"],
+)
+
+
+py_binary(
+    name = "jupyter",
+    srcs = ["//:jupyter"],
+    deps = [
+        requirement("notebook"),
+        requirement("matplotlib"),
+        "//lib/LinearAlgebra:matrix",        
+    ]
+)
