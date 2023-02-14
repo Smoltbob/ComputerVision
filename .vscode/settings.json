@@ -1,4 +1,8 @@
 {
     "python.formatting.provider": "black",
-    "cmake.configureOnOpen": false
+    "cmake.configureOnOpen": false,
+    "editor.formatOnSave": true,
+    "clang-tidy.checks": [
+        "modernize-*"
+    ]
 }

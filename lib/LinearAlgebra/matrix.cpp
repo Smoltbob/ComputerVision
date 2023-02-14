@@ -6,7 +6,7 @@
 #include <pybind11/stl.h>
 
 
-std::vector<std::vector<double>> transpose(std::vector<std::vector<double>>const& matrix) { 
+auto transpose(std::vector<std::vector<double>>const& matrix) -> std::vector<std::vector<double>> { 
    assert(matrix.size() > 2);
    std::vector<std::vector<double>> output{};
    for (auto const& row: matrix)
@@ -25,6 +25,10 @@ std::vector<std::vector<double>> transpose(std::vector<std::vector<double>>const
 
    }
    return output;
+}
+
+auto compute_determinant_3x3() -> double{
+    return 0;
 }
 
 PYBIND11_MODULE(matrix, m) {

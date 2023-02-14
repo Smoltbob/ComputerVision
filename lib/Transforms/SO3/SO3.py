@@ -2,6 +2,7 @@ import numpy as np
 from lib.Math.Quaternions.quaternions import *
 from lib.Math.constants import pi
 from lib.Math.math_utils import sqrt, atan2, cos, sin
+from lib.LinearAlgebra.matrix import transpose
 
 
 def skew(v):
@@ -12,6 +13,7 @@ def vee(W):
     return [-W[1][2], W[0][2], -W[0][1]]
 
 
+# TODO consider refactoring to using class methods instead
 class SO3:
     def __init__(self, R=None):
         if R is None:
@@ -44,7 +46,7 @@ class SO3:
         SO3 rotation matrix R
         """
         R = self.R
-        A = (R - R.T) / 2
+        A = (np.array(R) - np.array(transpose(R))) / 2
         norm = sqrt(-np.trace(A @ A) / 2)
         skew_matrix = ((np.arcsin(norm)) / norm) * A
         return so3(vee(skew_matrix))
@@ -64,16 +66,6 @@ class so3:
     def __repr__(self):
         return f"so3: {self.w}"
 
-    def exp_map_generic(self):
-        """
-        Simply computes the matrix exponent.
-        We should iterate to infinity but we stop at 50.
-        """
-        A = skew(self.w)
-        exp = np.eye(3)
-        for k in range(1, 50):
-            exp += (1 / np.math.factorial(k)) * np.linalg.matrix_power(A, k)
-        return SO3(exp)
 
     def exp_map_euler(self):
         """
@@ -89,21 +81,8 @@ class so3:
         c = cos(theta / 2)
         s = sin(theta / 2)
 
-        exp = [
-            [
-                2 * (x**2 - 1) * s**2 + 1,
-                2 * x * y * (s**2) - 2 * z * c * s,
-                2 * x * z * s**2 + 2 * y * c * s,
-            ],
-            [
-                2 * x * y * s**2 + 2 * z * c * s,
-                2 * (y**2 - 1) * s**2 + 1,
-                2 * y * z * s**2 - 2 * x * c * s,
-            ],
-            [
-                2 * x * z * s**2 - 2 * y * c * s,
-                2 * y * z * s**2 + 2 * x * c * s,
-                2 * (z**2 - 1) * s**2 + 1,
-            ],
-        ]
+        if (theta ** 2 < 1e-6):
+            return
+        else:
+            
         return SO3(np.array(exp))

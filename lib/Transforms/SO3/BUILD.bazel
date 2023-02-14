@@ -2,33 +2,33 @@ load("@notebooks//:requirements.bzl", "requirement")
 
 py_library(
     name = "SO3",
-    visibility = ["//visibility:public"],
     srcs = ["SO3.py"],
+    visibility = ["//visibility:public"],
     deps = [
-        "//lib/Math:Quaternions",
+        "//lib/LinearAlgebra:matrix",
         "//lib/Math:Constants",
-        "//lib/Math:Math_utils"
-    ]
+        "//lib/Math:Math_utils",
+        "//lib/Math:Quaternions",
+    ],
 )
 
 py_library(
     name = "SO3Utils",
-    visibility = ["//visibility:public"],
     srcs = ["SO3_utils.py"],
+    visibility = ["//visibility:public"],
     deps = [
-        "//lib/Transforms/SO3:SO3",
-    ]
+        "//lib/Transforms/SO3",
+    ],
 )
-
 
 py_binary(
     name = "jupyter",
     srcs = ["//:jupyter"],
     deps = [
-        "//lib/Transforms/SO3:SO3",
+        "//lib/Transforms/SO3",
         "//vonMisesFisher:vMF",
         requirement("scipy"),
         requirement("notebook"),
         requirement("matplotlib"),
-    ]
+    ],
 )

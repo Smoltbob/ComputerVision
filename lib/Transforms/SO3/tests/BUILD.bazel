@@ -5,7 +5,8 @@ py_test(
     srcs = ["testSO3.py"],
     visibility = ["//visibility:public"],
     deps = [
-        "//lib/Transforms/SO3:SO3",
-        requirement("numpy")
-    ]
+        "//lib/Transforms/SO3",
+        requirement("numpy"),
+        requirement("scipy"),
+    ],
 )
