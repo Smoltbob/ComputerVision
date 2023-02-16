@@ -1,7 +1,7 @@
 import numpy as np
 from lib.Math.Quaternions.quaternions import *
 from lib.Math.constants import pi
-from lib.Math.math_utils import sqrt, atan2, cos, sin
+from lib.Math.math_utils import sqrt, atan2, acos, cos, sin, norm
 from lib.LinearAlgebra.matrix import transpose
 
 
@@ -46,10 +46,9 @@ class SO3:
         SO3 rotation matrix R
         """
         R = self.R
-        A = (np.array(R) - np.array(transpose(R))) / 2
-        norm = sqrt(-np.trace(A @ A) / 2)
-        skew_matrix = ((np.arcsin(norm)) / norm) * A
-        return so3(vee(skew_matrix))
+        angle = acos((np.trace(R) - 1) / 2)
+        rotation_log = (angle / (2 * sin(angle))) * (np.array(R) - np.array(R).T)
+        return so3(vee(rotation_log))
 
     def centered_log_map(self, other):
         """
@@ -66,23 +65,28 @@ class so3:
     def __repr__(self):
         return f"so3: {self.w}"
 
+    def angle(self):
+        return norm(self.w)
 
     def exp_map_euler(self):
         """
         SO3 specific implementation
         """
         w = np.array(self.w)
-        theta = np.linalg.norm(w)
-        w = w / theta
+        angle = self.angle()
+        angle_squared = angle**2
+
         x = w[0]
         y = w[1]
         z = w[2]
 
-        c = cos(theta / 2)
-        s = sin(theta / 2)
-
-        if (theta ** 2 < 1e-6):
-            return
+        if angle_squared < 1e-6:
+            a = 1 - (angle_squared / 6) * (1 - angle_squared / 20)
+            b = 0.5 * (1 - angle_squared / 12)
         else:
-            
-        return SO3(np.array(exp))
+            a = sin(angle) / angle
+            b = (1 - cos(angle)) / angle_squared
+
+        skew_matrix = skew(w)
+        skew_matrix_squared = np.array(skew_matrix) @ np.array(skew_matrix)
+        return SO3(np.eye(3) + a * np.array(skew_matrix) + b * skew_matrix_squared)
