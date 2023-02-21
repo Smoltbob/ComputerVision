@@ -76,10 +76,6 @@ class so3:
         angle = self.angle()
         angle_squared = angle**2
 
-        x = w[0]
-        y = w[1]
-        z = w[2]
-
         if angle_squared < 1e-6:
             a = 1 - (angle_squared / 6) * (1 - angle_squared / 20)
             b = 0.5 * (1 - angle_squared / 12)
