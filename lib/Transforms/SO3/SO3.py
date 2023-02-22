@@ -57,6 +57,13 @@ class SO3:
         centered_SO3 = SO3(self.R @ other.R.T)  # R@S^-1
         return centered_SO3.log_map()
 
+    @classmethod
+    def is_valid(rotation):
+        """
+        Makes sure that a rotation matrix is valid
+        """
+        pass
+
 
 class so3:
     def __init__(self, w):

@@ -22,8 +22,17 @@ def SO3_median(rotation_list: list, threshold=1e-6, S_t=None):
 
     return S_t
 
-
 def SO3_mean(rotations):
     # Correct ?
     v_is = np.array([x.log_map().w for x in rotations])
     return SO3.so3(np.mean(v_is, axis=0)).exp_map_euler()
+
+
+def _compute_determinant_3x3():
+    
+
+
+def isValid(rotation):
+    # Checks that the rotation matrix is valid
+    # Check that the matrix is orthonormal and has determinant 1
+

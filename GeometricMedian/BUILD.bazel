@@ -4,11 +4,12 @@ py_binary(
     name = "jupyter",
     srcs = ["//:jupyter"],
     deps = [
-        "//lib/Transforms/SO3:SO3",
+        "//lib/Transforms/CircleGroup:S1",
+        "//lib/Transforms/SO3",
         "//lib/Transforms/SO3:SO3Utils",
         requirement("numpy"),
         requirement("notebook"),
         requirement("matplotlib"),
-        requirement("scipy")
-    ]
+        requirement("scipy"),
+    ],
 )
