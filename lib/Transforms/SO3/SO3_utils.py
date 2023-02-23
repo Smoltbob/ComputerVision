@@ -1,4 +1,5 @@
 from lib.Transforms.SO3 import SO3
+from lib.LinearAlgebra.matrix import compute_determinant_3x3, transpose
 import numpy as np
 
 
@@ -22,17 +23,17 @@ def SO3_median(rotation_list: list, threshold=1e-6, S_t=None):
 
     return S_t
 
+
 def SO3_mean(rotations):
     # Correct ?
     v_is = np.array([x.log_map().w for x in rotations])
     return SO3.so3(np.mean(v_is, axis=0)).exp_map_euler()
 
 
-def _compute_determinant_3x3():
-    
-
-
 def isValid(rotation):
     # Checks that the rotation matrix is valid
-    # Check that the matrix is orthonormal and has determinant 1
+    kDetTrhreshold = 1e-6
+    determinant_is_one = abs(compute_determinant_3x3(rotation) - 1) < kDetTrhreshold
+    is_orthonormal = np.allclose(rotation, transpose(rotation))
 
+    return determinant_is_one and is_orthonormal

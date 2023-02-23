@@ -10,3 +10,14 @@ py_test(
         requirement("scipy"),
     ],
 )
+
+py_test(
+    name = "test_SO3_utils",
+    srcs = ["test_SO3_utils.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//lib/Transforms/SO3:SO3_Utils",
+        requirement("numpy"),
+        requirement("scipy"),
+    ],
+)
