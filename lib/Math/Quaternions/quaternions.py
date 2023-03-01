@@ -72,7 +72,7 @@ class Quaternion:
         return Quaternion([self.w[0], -self.w[1], -self.w[2], -self.w[3]])
 
     def inverse(self):
-        assert sum(self.w) != 0  # TODO FP comparison
+        # assert sum(self.w) != 0  # TODO FP comparison
         factor = 1 / sum([x**2 for x in self.w])
         return self.conjugate() * factor
 

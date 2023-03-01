@@ -1,3 +1,7 @@
+from lib.Math.Quaternions.quaternions import Quaternion
+from lib.Math.math_utils import normalize
+
+
 class S3(Quaternion):
     def __init__(self, coeffs):
         super().__init__(coeffs)
