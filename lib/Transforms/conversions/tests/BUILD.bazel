@@ -1,0 +1,12 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
+py_test(
+    name = "test_conversions",
+    srcs = ["test_conversions.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//lib/Transforms/conversions",
+        requirement("numpy"),
+        requirement("scipy"),
+    ],
+)

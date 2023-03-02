@@ -1,0 +1,11 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
+py_library(
+    name = "conversions",
+    srcs = ["conversions.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//lib/Transforms/s3:s3",
+        "//lib/Transforms/SO3:SO3"
+    ],
+)
