@@ -6,8 +6,6 @@ from math import atan2 as _atan2
 from math import exp as _exp
 from math import log as _log
 
-pi = 3.1415
-
 
 def dot(vecA, vecB):
     """
@@ -21,6 +19,7 @@ def dot(vecA, vecB):
         total += a * b
     return total
 
+
 def cross(vecA, vecB):
     """
     Note this is the 3D version of the exterior product = wedge operator
@@ -31,33 +30,43 @@ def cross(vecA, vecB):
     c = vecA[0] * vecB[1] - vecA[1] * vecB[0]
     return [a, b, c]
 
+
 def squaredNorm(vec):
     return sum([x**2 for x in vec])
 
+
 def norm(vec):
     return sqrt(squaredNorm(vec))
+
 
 def normalize(vec):
     n = norm(vec)
     return [x / n for x in vec]
 
+
 def sqrt(x):
     return _sqrt(x)
+
 
 def atan2(x, y):
     return _atan2(x, y)
 
+
 def sin(x):
     return _sin(x)
+
 
 def cos(x):
     return _cos(x)
 
+
 def acos(x):
     return _acos(x)
 
+
 def exp(x):
     return _exp(x)
+
 
 def log(x):
     return _log(x)

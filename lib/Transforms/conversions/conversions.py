@@ -1,5 +1,5 @@
 from lib.Transforms.s3.s3 import S3
-from lib.Transforms.SO3 import SO3
+from lib.Transforms.SO3.SO3 import SO3
 
 
 def S3_from_SO3(SO3_matrix):
@@ -51,7 +51,7 @@ def SO3_from_S3(S3_quat):
     """
     Unit quaternion to matrix conversion
     """
-    qr, qi, qj, qk = self.w
+    qr, qi, qj, qk = S3_quat.w
     r00 = 1 - 2 * (qj**2 + qk**2)
     r01 = 2 * (qi * qj - qk * qr)
     r02 = 2 * (qi * qk + qj * qr)
