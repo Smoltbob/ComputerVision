@@ -1,5 +1,5 @@
 from lib.Math.Quaternions.quaternions import Quaternion
-from lib.Math.math_utils import normalize
+from lib.Math.math_utils import normalize, acos, sin
 
 
 """
@@ -20,11 +20,10 @@ class S3(Quaternion):
     def log_map(self, numerically_stable=False):
         # Ie from Quaternion to axis angle
         # See https://vision.in.tum.de/_media/members/demmeln/nurlanov2021so3log.pdf
-        if numerically_stable:
-            return
 
-        factor = 2 * acos(self.scalar())
-        return [factor * x for x in normalize(self.vector())]
+        angle = acos(self.scalar())
+        vector = [(1 / sin(angle)) * i for i in self.vector()]
+        return [angle * x for x in vector]
 
     def from_algebra(w):
         # ie from_axis angle, ie exp_map

@@ -12,16 +12,6 @@ py_library(
     ],
 )
 
-py_library(
-    name = "SO3_Utils",
-    srcs = ["SO3_utils.py"],
-    visibility = ["//visibility:public"],
-    deps = [
-        "//lib/LinearAlgebra:matrix",
-        "//lib/Transforms/SO3",
-    ],
-)
-
 py_binary(
     name = "jupyter",
     srcs = ["//:jupyter"],

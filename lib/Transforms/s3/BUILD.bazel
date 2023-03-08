@@ -18,6 +18,8 @@ py_binary(
     deps = [
         "//lib/Math:Math_utils",
         "//lib/Transforms/s3",
+        "//lib/Transforms/SO3",
+        "//lib/Transforms/conversions",
         requirement("scipy"),
         requirement("notebook"),
         requirement("matplotlib"),

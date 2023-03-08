@@ -70,3 +70,7 @@ def exp(x):
 
 def log(x):
     return _log(x)
+
+
+def absolute_value(vec):
+    return [abs(x) for x in vec]
