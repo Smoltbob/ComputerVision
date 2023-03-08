@@ -23,9 +23,9 @@ def compute_determinant_3x3(matrix):
     for row in matrix:
         assert (len(row) == 3, "Cannot compute determinant of non 3x3 matrix")
 
-    a, b, c = row[0]
-    d, e, f = row[1]
-    g, h, i = row[2]
+    a, b, c = matrix[0]
+    d, e, f = matrix[1]
+    g, h, i = matrix[2]
 
     return a * e * i + b * f * g + c * d * h - c * e * g - b * d * i - a * f * h
 
