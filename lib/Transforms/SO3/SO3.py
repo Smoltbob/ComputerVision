@@ -19,7 +19,7 @@ class SO3:
         if R is None:
             R = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
 
-        assert (self.isValid(R), "Rotation is invalid")
+        assert self.isValid(R), "Rotation is invalid"
         self.R = R
 
     def __repr__(self):
@@ -30,7 +30,7 @@ class SO3:
         return SO3(self.R @ rhs.R)
 
     def rotation_axis(self):
-        assert (self.isValid(self.R), "Rotation is invalid")
+        assert self.isValid(self.R), "Rotation is invalid"
         rotation_matrix = self.R
 
         rotation_trace = trace(rotation_matrix)

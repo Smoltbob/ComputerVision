@@ -1,11 +1,11 @@
 from lib.Math.Quaternions.quaternions import Quaternion
-from lib.Math.math_utils import normalize, acos, sin
+from lib.Math.math_utils import normalize, acos, sin, norm, cos
 
 
 """
 A Unit Quaternion is a Quaternion that is initiliazed with unit norm.
 It supports the same operations as Quaternions.
-It may loose its identity and thus operations on Unit Quaternions must take 
+It may loose its identity and thus operations on Unit Quaternions must take
 care of this.
 """
 

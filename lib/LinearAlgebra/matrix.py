@@ -3,9 +3,9 @@ from numpy.linalg import svd
 
 def transpose(matrix):
     # Prerequisite: square matrix
-    assert (len(matrix) > 2, f"Cannot transpose matrix with {len(matrix)} rows")
+    assert len(matrix) > 2, f"Cannot transpose matrix with {len(matrix)} rows"
     for row in matrix:
-        assert (len(row) == len(matrix), "Cannot transpose non-square matrix")
+        assert len(row) == len(matrix), "Cannot transpose non-square matrix"
 
     newmatrix = []
     for i in range(len(matrix)):
@@ -18,23 +18,24 @@ def transpose(matrix):
 
 
 def compute_determinant_3x3(matrix):
-    # Prerequisite: 3x3 matrix
-    assert (len(matrix) == 3, "Cannot compute determinant of non 3x3 matrix")
+    # Prereqlen(matrix) == 3, "Cannot compute determinant of non 3x3 matrix")
     for row in matrix:
-        assert (len(row) == 3, "Cannot compute determinant of non 3x3 matrix")
+        assert len(row) == 3, "Cannot compute determinant of non 3x3 matrix"
 
     a, b, c = matrix[0]
     d, e, f = matrix[1]
     g, h, i = matrix[2]
 
-    return a * e * i + b * f * g + c * d * h - c * e * g - b * d * i - a * f * h
+    return (
+        a * e * i + b * f * g + c * d * h - c * e * g - b * d * i - a * f * h
+    )
 
 
 def trace(matrix):
     # Prerequisite: square matrix
-    assert (len(matrix) > 2, f"Cannot transpose matrix with {len(matrix)} rows")
+    assert len(matrix) > 2, f"Cannot transpose matrix with {len(matrix)} rows"
     for row in matrix:
-        assert (len(row) == len(matrix), "Cannot transpose non-square matrix")
+        assert len(row) == len(matrix), "Cannot transpose non-square matrix"
 
     diag_sum = 0
     for i in range(len(matrix)):

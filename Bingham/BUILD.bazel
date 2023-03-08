@@ -6,7 +6,6 @@ py_binary(
     deps = [
         "//lib/Math:Quaternions",
         "//lib/Transforms/SO3",
-        "//lib/Transforms/SO3:SO3_Utils",
         requirement("numpy"),
         requirement("notebook"),
         requirement("matplotlib"),
