@@ -5,6 +5,7 @@ py_library(
     srcs = ["SO3.py"],
     visibility = ["//visibility:public"],
     deps = [
+        "//lib//Transforms//so3:so3",
         "//lib/LinearAlgebra:matrix",
         "//lib/Math:Constants",
         "//lib/Math:Math_utils",

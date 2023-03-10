@@ -1,6 +1,11 @@
 from numpy.linalg import svd
 
 
+"""
+Utility matrix operations
+"""
+
+
 def transpose(matrix):
     # Prerequisite: square matrix
     assert len(matrix) > 2, f"Cannot transpose matrix with {len(matrix)} rows"

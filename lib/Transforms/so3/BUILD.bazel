@@ -1,0 +1,11 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
+py_library(
+    name = "so3",
+    srcs = ["so3.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//lib/Math:Constants",
+        "//lib/Math:Math_utils",
+    ],
+)

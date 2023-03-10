@@ -17,14 +17,6 @@ class S3(Quaternion):
         if self.norm() != 1:
             self.w = normalize(self.w)
 
-    def log_map(self, numerically_stable=False):
-        # Ie from Quaternion to axis angle
-        # See https://vision.in.tum.de/_media/members/demmeln/nurlanov2021so3log.pdf
-
-        angle = acos(self.scalar())
-        vector = [(1 / sin(angle)) * i for i in self.vector()]
-        return [angle * x for x in vector]
-
     def from_algebra(w):
         # ie from_axis angle, ie exp_map
         if sum([x for x in w]) == 0:
