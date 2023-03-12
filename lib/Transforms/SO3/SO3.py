@@ -5,14 +5,6 @@ from lib.Math.math_utils import sqrt, atan2, acos, cos, sin, norm
 from lib.LinearAlgebra.matrix import transpose, compute_determinant_3x3, trace
 
 
-def skew(v):
-    return [[0, -v[2], v[1]], [v[2], 0, -v[0]], [-v[1], v[0], 0]]
-
-
-def vee(W):
-    return [-W[1][2], W[0][2], -W[0][1]]
-
-
 # TODO consider refactoring to using class methods instead
 class SO3:
     def __init__(self, R=None):
@@ -81,14 +73,13 @@ class SO3:
     def angle(self):
         return acos((np.trace(self.R) - 1) / 2)
 
-    
     """
     def centered_log_map(self, other):
-        """
-        Returns the log map centered on other
-        """
-        centered_SO3 = SO3(self.R @ other.R.T)  # R@S^-1
-        return centered_SO3.log_map()
+
+    Returns the log map centered on other
+   
+    centered_SO3 = SO3(self.R @ other.R.T)  # R@S^-1
+    return centered_SO3.log_map()
     """
 
     @classmethod
@@ -127,6 +118,8 @@ class SO3:
         determinant_is_one = (
             abs(compute_determinant_3x3(rotation) - 1) < kDetTrhreshold
         )
-        is_orthonormal = np.allclose(rotation, transpose(rotation))
+        is_orthonormal = np.allclose(
+            np.array(rotation) @ np.array(transpose(rotation)), np.eye(3)
+        )
 
         return determinant_is_one and is_orthonormal

@@ -1,3 +1,6 @@
+from lib.Math.math_utils import norm
+
+
 class so3:
     def __init__(self, w):
         self.w = w  # euler angles

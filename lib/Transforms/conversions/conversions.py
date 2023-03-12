@@ -1,6 +1,16 @@
 from lib.Transforms.s3.s3 import S3
 from lib.Transforms.SO3.SO3 import SO3
 from lib.Transforms.so3.so3 import so3
+from lib.Math.math_utils import sin, acos, cos
+import numpy as np
+
+
+def skew(v):
+    return [[0, -v[2], v[1]], [v[2], 0, -v[0]], [-v[1], v[0], 0]]
+
+
+def vee(W):
+    return [-W[1][2], W[0][2], -W[0][1]]
 
 
 def S3_from_SO3(SO3):
@@ -84,8 +94,8 @@ def SO3_to_log(SO3_mat):
     Returns the skew matrix in lie algebra associated to the
     SO3 rotation matrix R
     """
-    R = self.R
-    angle = self.angle()
+    R = SO3_mat.R
+    angle = SO3_mat.angle()
     rotation_log = (angle / (2 * sin(angle))) * (np.array(R) - np.array(R).T)
 
     return so3(vee(rotation_log))
@@ -95,8 +105,8 @@ def log_to_SO3(so3):
     """
     SO3 specific implementation
     """
-    w = np.array(self.w)
-    angle = self.angle()
+    w = np.array(so3.w)
+    angle = so3.angle()
     angle_squared = angle**2
 
     if angle_squared < 1e-6:
@@ -115,6 +125,6 @@ def S3_to_log(S3_quat):
     # Ie from Quaternion to axis angle
     # See https://vision.in.tum.de/_media/members/demmeln/nurlanov2021so3log.pdf
 
-    angle = acos(self.scalar())
-    vector = [(1 / sin(angle)) * i for i in self.vector()]
+    angle = acos(S3_quat.scalar())
+    vector = [(1 / sin(angle)) * i for i in S3_quat.vector()]
     return so3([angle * x for x in vector])

@@ -6,6 +6,8 @@ py_library(
     visibility = ["//visibility:public"],
     deps = [
         "//lib/Transforms/s3:s3",
-        "//lib/Transforms/SO3:SO3"
+        "//lib/Transforms/so3:so3",
+        "//lib/Transforms/SO3:SO3",
+        "//lib/Math:Math_utils",
     ],
 )
