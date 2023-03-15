@@ -1,7 +1,7 @@
 from lib.Transforms.s3.s3 import S3
 from lib.Transforms.SO3.SO3 import SO3
 from lib.Transforms.so3.so3 import so3
-from lib.Math.math_utils import sin, acos, cos
+from lib.Math.math_utils import sin, acos, cos, norm, sqrt
 import numpy as np
 
 
@@ -124,7 +124,20 @@ def log_to_SO3(so3):
 def S3_to_log(S3_quat):
     # Ie from Quaternion to axis angle
     # See https://vision.in.tum.de/_media/members/demmeln/nurlanov2021so3log.pdf
+    # https://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToAngle/index.htm
 
-    angle = acos(S3_quat.scalar())
-    vector = [(1 / sin(angle)) * i for i in S3_quat.vector()]
-    return so3([angle * x for x in vector])
+    angle = 2 * acos(S3_quat.scalar())
+    axis = [x / sqrt(1 - S3_quat.scalar() ** 2) for x in S3_quat.vector()]
+    return so3([angle * x for x in axis])
+
+
+def log_to_S3(so3):
+    w = so3.w
+    # ie from_axis angle, ie exp_map
+    if sum([x for x in w]) == 0:
+        return S3([1, 0, 0, 0])
+
+    angle = norm(w) / 2
+    scalar = cos(angle)
+    vector_factor = sin(angle) / norm(w)
+    return S3([scalar, *[vector_factor * x for x in w]])

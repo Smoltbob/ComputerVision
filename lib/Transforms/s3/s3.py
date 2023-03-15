@@ -1,5 +1,5 @@
 from lib.Math.Quaternions.quaternions import Quaternion
-from lib.Math.math_utils import normalize, acos, sin, norm, cos
+from lib.Math.math_utils import normalize
 
 
 """
@@ -16,13 +16,3 @@ class S3(Quaternion):
 
         if self.norm() != 1:
             self.w = normalize(self.w)
-
-    def from_algebra(w):
-        # ie from_axis angle, ie exp_map
-        if sum([x for x in w]) == 0:
-            return S3([1, 0, 0, 0])
-
-        angle = norm(w) / 2
-        scalar = cos(angle)
-        vector_factor = sin(angle) / norm(w)
-        return S3([scalar, *[vector_factor * x for x in w]])
