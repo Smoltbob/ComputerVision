@@ -1,7 +1,7 @@
 load("@notebooks//:requirements.bzl", "requirement")
 load("//:misc/rules.bzl", "pybind_module")
 
-pybind = False
+pybind = True
 
 py_library(
     name = "matrix" if not pybind else "none_py",

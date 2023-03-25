@@ -26,10 +26,27 @@ auto transpose(std::vector<std::vector<double>> const &matrix) -> std::vector<st
     return output;
 }
 
-auto compute_determinant_3x3() -> double
+auto compute_determinant_3x3(std::vector<std::vector<double>> const &matrix) -> double
 {
+    // Since we know it's 3x3, we can use an array
+    assert(matrix.size() == 3);
+    for (auto const &row : matrix)
+    {
+        assert(row.size() == 3);
+    }
+    double const a{matrix[0][0]};
+    double const b{matrix[0][1]};
+    double const c{matrix[0][2]};
+    double const d{matrix[1][0]};
+    double const e{matrix[1][1]};
+    double const f{matrix[1][2]};
+    double const g{matrix[2][0]};
+    double const h{matrix[2][1]};
+    double const i{matrix[2][2]};
 
-    return 0;
+    return a * e * i + b * f * g +
+           c * d * h - c * e * g -
+           b * d * i - a * f * h;
 }
 
 PYBIND11_MODULE(matrix, m)
