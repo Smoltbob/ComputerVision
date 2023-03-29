@@ -1,5 +1,5 @@
 import unittest
-from lib.LinearAlgebra.matrix import transpose, compute_determinant_3x3
+from lib.LinearAlgebra.matrix import transpose, compute_determinant_3x3, trace
 from random import random
 import numpy as np
 
@@ -41,7 +41,18 @@ class TestMatrix(unittest.TestCase):
         AB_t = transpose(A @ B)
         B_tA_t = np.array(transpose(B)) @ np.array(transpose(A))
 
-        self.assertTrue(np.allclose(AB_t, B_tA_t)
+        self.assertTrue(np.allclose(AB_t, B_tA_t))
+
+    def test_trace(self):
+        matrix = []
+        trace_gt = 0
+        for i in range(3):
+            matrix.append([random(), random(), random()])
+        # TODO test better, this is reimplementing the code.
+        for i in range(3):
+            trace_gt += matrix[i][i]
+
+        self.assertTrue(trace_gt == trace(matrix))
 
 
 if __name__ == "__main__":

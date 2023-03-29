@@ -26,6 +26,7 @@ auto transpose(std::vector<std::vector<double>> const &matrix) -> std::vector<st
     return output;
 }
 
+// TODO rename to determinant_3x3
 auto compute_determinant_3x3(std::vector<std::vector<double>> const &matrix) -> double
 {
     // Since we know it's 3x3, we can use an array
@@ -44,12 +45,30 @@ auto compute_determinant_3x3(std::vector<std::vector<double>> const &matrix) -> 
     double const h{matrix[2][1]};
     double const i{matrix[2][2]};
 
-    return a * e * i + b * f * g +
+    return a * e * i + b * f * g +    
            c * d * h - c * e * g -
            b * d * i - a * f * h;
 }
 
+auto trace(std::vector<std::vector<double>> const &matrix) -> double
+{
+    // Prerequisite: square matrix
+    for (auto const &row: matrix)
+    {
+        assert(row.size() == matrix.size());
+    }
+    double result{0.0};
+    for (std::size_t j = 0; j < matrix.size(); ++j)
+    {
+        result += matrix[j][j];
+    }
+    return result;
+}
+
+
 PYBIND11_MODULE(matrix, m)
 {
-    m.def("transpose", &transpose, "Transpose a square matrix");
+    m.def("transpose", &transpose, "Transpose of a square matrix");
+    m.def("compute_determinant_3x3", &compute_determinant_3x3, "Compute the determinant of a 3x3 matrix");
+    m.def("trace", &trace, "Trace of a square matrix");
 }
