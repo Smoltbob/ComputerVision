@@ -6,6 +6,7 @@ py_binary(
     deps = [
         "//lib/Transforms/CircleGroup:S1",
         "//lib/Transforms/SO3",
+        "//lib/Transforms/SO3:SO3_Utils",
         requirement("numpy"),
         requirement("notebook"),
         requirement("matplotlib"),
