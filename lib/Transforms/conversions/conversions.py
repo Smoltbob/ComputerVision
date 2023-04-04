@@ -74,7 +74,9 @@ def SO3_from_S3(S3_quat):
     txy = 2 * x * y
     txz = 2 * x * z
     tyz = 2 * y * z
-    txw = 2 * x * w
+
+
+Z    txw = 2 * x * w
     tyw = 2 * y * w
     tzw = 2 * z * w
 
