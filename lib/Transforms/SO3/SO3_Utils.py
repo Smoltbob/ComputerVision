@@ -1,5 +1,5 @@
 from lib.Transforms.SO3 import SO3
-from lib.Transforms.so3 import so3
+from lib.Transforms.so3.so3 import so3
 from lib.Transforms.conversions.conversions import SO3_to_log, log_to_SO3
 import numpy as np
 
