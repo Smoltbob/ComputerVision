@@ -21,6 +21,9 @@ class SO3:
         # TODO check that they both have the same type and representation
         return SO3(self.R @ rhs.R)
 
+    def inverse(self):
+        return SO3(transpose(self.R))
+
     def rotation_axis(self):
         assert self.isValid(self.R), "Rotation is invalid"
         rotation_matrix = self.R
