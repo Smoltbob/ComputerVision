@@ -1,0 +1,9 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
+py_library(
+    name = "Graph",
+    srcs = ["graph.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+    ]
+)
