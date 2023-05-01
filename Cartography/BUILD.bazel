@@ -7,5 +7,6 @@ py_binary(
         requirement("geopandas"),
         requirement("notebook"),
         requirement("matplotlib"),
+        requirement("networkx")
     ]
 )
