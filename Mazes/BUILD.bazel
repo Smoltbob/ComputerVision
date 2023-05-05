@@ -1,18 +1,18 @@
 load("@notebooks//:requirements.bzl", "requirement")
-load("@pybind11_bazel//:build_defs.bzl", "pybind_library", "pybind_extension")
-load("//:misc/rules.bzl", "pybind_module")
 
-pybind_module(
-    name = "example",
-    srcs = ["src/test.cpp"],
+cc_library(
+    name = "cell",
+    srcs = ["src/cell.cpp"],
+    hdrs = ["cell.h"],
     visibility = ["//visibility:public"],
 )
+
 
 py_binary(
     name = "jupyter",
     srcs = ["//:jupyter"],
     deps = [        
-        "//Mazes:example",
+        "//Mazes/pybind:cell",
         requirement("notebook"),
     ]
 )
