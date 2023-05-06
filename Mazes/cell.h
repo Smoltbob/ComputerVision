@@ -8,12 +8,10 @@ class Cell
         std::uint16_t col{0U};
 
     public:
-
-        Cell();
         
         auto friend operator<<(std::ostream& os, const Cell& cell) -> std::ostream& 
         {
-            os << "Cell location: row = " << cell.row <<  "," << cell.col;
+            os << "Cell location: row = " << cell.row <<  ", col = " << cell.col;
             return os;
         }
 
