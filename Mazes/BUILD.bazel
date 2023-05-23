@@ -1,9 +1,14 @@
 load("@notebooks//:requirements.bzl", "requirement")
 
 cc_library(
-    name = "cell",
-    srcs = ["src/cell.cpp"],
-    hdrs = ["cell.h"],
+    name = "Mazes",
+    srcs = [
+        "src/cell.cpp",
+        "src/grid.cpp",
+    ],
+    hdrs = [
+        "cell.h",
+        "grid.h"],
     visibility = ["//visibility:public"],
 )
 

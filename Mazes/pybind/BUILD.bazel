@@ -4,7 +4,10 @@ load("//:misc/rules.bzl", "pybind_module")
 
 pybind_module(
     name = "cell",
-    srcs = ["cell_pybind.cpp"],
+    srcs = [
+        "cell_pybind.cpp",
+        "grid_pybind.cpp",
+    ],
     visibility = ["//visibility:public"],
-    deps = ["//Mazes:cell"]
+    deps = ["//Mazes"]
 )
