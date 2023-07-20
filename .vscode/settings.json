@@ -3,6 +3,16 @@
     "cmake.configureOnOpen": false,
     "editor.formatOnSave": true,
     "clang-tidy.checks": [
+        "abseil-*",
+        "altera-*",
+        "android-*",
+        "fuchsia-*",
+        "google-*",
+        "llvm*",
+        "zircon-*",
+        "readability-*",
+        "cppcoreguidelines-*",
+        "misc-non-private-member-variables-in-classes",
         "modernize-*"
     ]
 }
