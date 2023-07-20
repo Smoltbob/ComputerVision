@@ -1,0 +1,13 @@
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
+
+cc_binary(
+    name = "main",
+    srcs = ["src/main.cpp"],
+    deps = ["//DesignPatterns/test_bazel:hello"]
+)
+
+cc_library(
+    name = "hello",
+    srcs = ["src/hello.cpp"],
+    hdrs = ["hello.h"]
+)
