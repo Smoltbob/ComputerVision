@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
   std::cout << get_greet(who) << std::endl;
   print_localtime();
 
-  Singleton *tmp = Singleton::Instance();
-  std::cout << tmp->GetValue() << '\n';
+  Singleton &tmp = Singleton::Instance();
+  std::cout << tmp.GetValue() << '\n';
   return 0;
 }
