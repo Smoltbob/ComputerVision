@@ -6,13 +6,13 @@ def pybind_module(name, srcs, visibility, imports = [], deps = [], linkopts = []
     Build a py library out of a pybind extension *.so
     """
     pybind_extension(
-        name = name,
+        name = name + 'lib', # We add an arbitrary suffix because names have to be unique
         srcs = srcs,
         deps = deps
     )
 
     py_library(
         name = name,
-        data = [name + ".so"],
+        data = [name + "lib.so"],
         visibility = visibility,
     )

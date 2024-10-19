@@ -1,19 +1,36 @@
 load("@notebooks//:requirements.bzl", "requirement")
 load("//:misc/rules.bzl", "pybind_module")
 
-pybind = True
+config_setting(
+    name = "use_cpp",
+    flag_values = {"//misc/flags:selected_mode": "cpp"},
+)
+
+config_setting(
+    name = "use_python",
+    flag_values = {"//misc/flags:selected_mode": "py"},
+)
 
 py_library(
-    name = "matrix" if not pybind else "none_py",
+    name = "matrix_py",
     srcs = ["matrix.py"],
     visibility = ["//visibility:public"],
 )
 
 pybind_module(
-    name = "matrix" if pybind else "none_cpp",
+    name = "matrix_cpp",
     srcs = ["matrix.cpp"],
     visibility = ["//visibility:public"],
 )
+
+alias(
+    name = "matrix",
+    actual = select({
+        "use_cpp": ":matrix_cpp",
+        "use_python": ":matrix_py",
+    }),
+)
+
 
 py_binary(
     name = "jupyter",
@@ -21,6 +38,6 @@ py_binary(
     deps = [
         requirement("notebook"),
         requirement("matplotlib"),
-        "//lib/LinearAlgebra:matrix",
+        ":matrix"
     ],
 )
