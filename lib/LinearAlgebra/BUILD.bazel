@@ -29,6 +29,7 @@ alias(
         "use_cpp": ":matrix_cpp",
         "use_python": ":matrix_py",
     }),
+    visibility = ["//visibility:public"],
 )
 
 

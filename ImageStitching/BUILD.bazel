@@ -1,0 +1,14 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
+py_binary(
+    name = "jupyter",
+    srcs = ["//:jupyter"],
+    deps = [
+        requirement("notebook"),
+        requirement("matplotlib"),
+        requirement("tqdm"),
+        requirement("opencv-python"),
+        requirement("pillow"),
+        requirement("scipy"),
+    ],
+)
