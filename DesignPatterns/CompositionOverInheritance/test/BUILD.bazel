@@ -1,0 +1,9 @@
+cc_test(
+    name = "test_inheritance",
+    size = "small",
+    srcs = ["test_inheritance.cpp"],
+    deps = [
+        "@googletest//:gtest",
+        "@googletest//:gtest_main",
+    ],
+)

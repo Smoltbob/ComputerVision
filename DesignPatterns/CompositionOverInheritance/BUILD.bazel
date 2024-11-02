@@ -1,7 +1,12 @@
 load("@rules_cc//cc:defs.bzl", "cc_binary")
 
+cc_library(
+    name = "inheritance_lib",
+    hdrs = ["inheritance.h"]
+)
+
 cc_binary(
     name = "inheritance",
-    srcs = ["inheritance.cpp"],
-    deps = []
+    srcs = ["src/main.cpp"],
+    deps = [":inheritance_lib"]
 )
