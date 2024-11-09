@@ -3,6 +3,7 @@ cc_test(
     size = "small",
     srcs = ["test_inheritance.cpp"],
     deps = [
+        "//DesignPatterns/CompositionOverInheritance:inheritance_lib",
         "@googletest//:gtest",
         "@googletest//:gtest_main",
     ],

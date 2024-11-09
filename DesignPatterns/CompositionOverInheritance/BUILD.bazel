@@ -2,7 +2,8 @@ load("@rules_cc//cc:defs.bzl", "cc_binary")
 
 cc_library(
     name = "inheritance_lib",
-    hdrs = ["inheritance.h"]
+    hdrs = ["inheritance.h"],
+    visibility = ["//visibility:public"]
 )
 
 cc_binary(

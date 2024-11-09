@@ -1,31 +1,30 @@
 #include <iostream>
+#include <string>
 
 // Defining some properties. They should be in their own headers.
 class Object {
 public:
-  virtual void update() {}
-  virtual void draw() {}
-  virtual void collide(Object objects[]) {}
+  virtual std::string update() { return ""; }
+  virtual std::string draw() { return ""; }
+  virtual std::string collide(Object objects[]) { return ""; }
 };
 
 class Visible : virtual public Object {
 public:
-  virtual void draw() override {
+  virtual std::string draw() override {
     // Code to draw a model
-    std::cout << "Hello! I am visible." << std::endl;
+    return "Hello! I am visible.";
   }
 };
 
 class Solid : virtual public Object {
 public:
-  virtual void collide(Object objects[]) override {
-    std::cout << "Booom!" << std::endl;
-  }
+  virtual std::string collide(Object objects[]) override { return "Booom!"; }
 };
 
 class Movable : virtual public Object {
 public:
-  virtual void update() override { std::cout << "Moving..." << std::endl; }
+  virtual std::string update() override { return "Moving..."; }
 };
 
 // Using the properties to define behaviors in new classes
