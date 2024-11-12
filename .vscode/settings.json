@@ -81,6 +81,9 @@
         "thread": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "any": "cpp"
+        "any": "cpp",
+        "csignal": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp"
     }
 }
