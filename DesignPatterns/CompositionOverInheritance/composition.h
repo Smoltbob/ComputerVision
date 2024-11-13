@@ -67,3 +67,24 @@ public:
 
   void collide(Object objects[]) { _c->collide(objects); };
 };
+
+// Finally we  can buildd our concrete classes
+class Player : public Object {
+public:
+  Player() : Object(new Visible(), new Moveable(), new Solid()) {}
+};
+
+class Cloud : public Object {
+public:
+  Cloud() : Object(new Visible(), new Moveable(), new NotSolid()) {}
+};
+
+class Building : public Object {
+public:
+  Building() : Object(new Visible(), new NotMoveable(), new Solid()) {}
+};
+
+class Trap : public Object {
+public:
+  Trap() : Object(new NotVisible(), new NotMoveable(), new Solid()) {}
+};
