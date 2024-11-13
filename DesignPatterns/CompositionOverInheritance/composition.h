@@ -3,6 +3,8 @@
 // Demonstrating the principle of composition.
 // Each component is defined by a class, with subclasses for each variant.
 
+class Object;
+
 // Defines Visibility
 class VisibilityDelegate {
 public:
@@ -47,7 +49,7 @@ public:
 
 class Solid : public CollisionDelegate {
 public:
-  virtual std::string collide(Object objects[]) override { return "Booom !"; }
+  virtual std::string collide(Object objects[]) override { return "Booom!"; }
 };
 
 // We can now define the Object class, composed of our defined properties.
@@ -61,11 +63,11 @@ public:
   Object(VisibilityDelegate *v, UpdateDelegate *u, CollisionDelegate *c)
       : _v(v), _u(u), _c(c) {}
 
-  void update() { _u->update(); };
+  std::string update() { return _u->update(); };
 
-  void draw() { _v->draw(); };
+  std::string draw() { return _v->draw(); };
 
-  void collide(Object objects[]) { _c->collide(objects); };
+  std::string collide(Object objects[]) { return _c->collide(objects); };
 };
 
 // Finally we  can buildd our concrete classes

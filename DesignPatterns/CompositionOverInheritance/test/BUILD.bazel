@@ -8,3 +8,14 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_test(
+    name = "test_composition",
+    size = "small",
+    srcs = ["test_composition.cpp"],
+    deps = [
+        "//DesignPatterns/CompositionOverInheritance:composition_lib",
+        "@googletest//:gtest",
+        "@googletest//:gtest_main",
+    ],
+)
