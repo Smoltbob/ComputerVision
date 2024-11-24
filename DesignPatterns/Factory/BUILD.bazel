@@ -1,0 +1,10 @@
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+
+
+cc_binary(
+    name = "Factory",
+    srcs = [
+        "src/factory.cpp", 
+        "factory.h"
+        ],
+)
