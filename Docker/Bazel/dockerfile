@@ -1,0 +1,25 @@
+# Use an official Ubuntu as a parent image
+FROM ubuntu:20.04
+
+# Set the working directory
+WORKDIR /app
+
+# Install dependencies
+RUN apt-get update && \
+    apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    software-properties-common && \
+    curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg && \
+    mv bazel-archive-keyring.gpg /usr/share/keyrings/bazel-archive-keyring.gpg && \
+    echo "deb [signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list && \
+    apt-get update && \
+    apt-get install -y bazel
+
+# Verify the installation
+RUN bazel version
+
+# Set the entry point
+ENTRYPOINT ["bazel"]

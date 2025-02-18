@@ -1,0 +1,7 @@
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+
+cc_binary(
+    name = "copy_move_member_functions",
+    srcs = ["copy_move_member_functions.cpp"],
+    deps = []
+)
