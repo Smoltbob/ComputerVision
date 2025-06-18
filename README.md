@@ -37,6 +37,14 @@ Run (from repo root)
 sudo docker run -v ${PWD}:/app linter
 ```
 
+## Docker for Bazel
+There is also a dockerfile in `Docker/Bazel`.
+
+Build the image
+```
+docker build -t bazel Docker/Bazel 
+```
+
 
 # Dependencies
 

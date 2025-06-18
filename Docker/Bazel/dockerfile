@@ -5,18 +5,15 @@ FROM ubuntu:20.04
 WORKDIR /app
 
 # Install dependencies
-RUN apt-get update && \
-    apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
+# Install Bazelisk and dependencies for arm64
+RUN apt-get update && apt-get install -y \
     curl \
+    unzip \
     gnupg \
-    software-properties-common && \
-    curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg && \
-    mv bazel-archive-keyring.gpg /usr/share/keyrings/bazel-archive-keyring.gpg && \
-    echo "deb [signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list && \
-    apt-get update && \
-    apt-get install -y bazel
+    build-essential \
+    && curl -LO "https://github.com/bazelbuild/bazelisk/releases/download/v1.17.0/bazelisk-linux-arm64" \
+    && chmod +x bazelisk-linux-arm64 \
+    && mv bazelisk-linux-arm64 /usr/local/bin/bazel
 
 # Verify the installation
 RUN bazel version
