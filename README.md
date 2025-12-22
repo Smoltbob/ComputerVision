@@ -45,6 +45,12 @@ Build the image
 docker build -t bazel Docker/Bazel 
 ```
 
+Run a target
+````
+bash Docker/build_with_docker.sh
+docker exec -w /app mybazel bazel run //lib/CameraModels:omnidirectional_main
+```
+
 
 # Dependencies
 
