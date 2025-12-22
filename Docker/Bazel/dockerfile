@@ -11,9 +11,20 @@ RUN apt-get update && apt-get install -y \
     unzip \
     gnupg \
     build-essential \
+    python3 \
+    python3-pip \
     && curl -LO "https://github.com/bazelbuild/bazelisk/releases/download/v1.17.0/bazelisk-linux-arm64" \
     && chmod +x bazelisk-linux-arm64 \
     && mv bazelisk-linux-arm64 /usr/local/bin/bazel
+
+# Create a non-root user and group
+RUN groupadd -r appuser && useradd -m -r -g appuser appuser
+
+# Change ownership of the working directory
+RUN chown -R appuser:appuser /app
+
+# Switch to the non-root user
+USER appuser
 
 # Verify the installation
 RUN bazel version
