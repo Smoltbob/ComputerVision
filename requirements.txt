@@ -16,30 +16,15 @@ argon2-cffi-bindings==21.2.0
 asttokens==2.1.0
     # via stack-data
 attrs==22.1.0
-    # via
-    #   fiona
-    #   jsonschema
+    # via jsonschema
 backcall==0.2.0
     # via ipython
 beautifulsoup4==4.11.1
     # via nbconvert
 bleach==5.0.1
     # via nbconvert
-certifi==2022.12.7
-    # via
-    #   fiona
-    #   pyproj
 cffi==1.15.1
     # via argon2-cffi-bindings
-click==8.1.3
-    # via
-    #   click-plugins
-    #   cligj
-    #   fiona
-click-plugins==1.1.1
-    # via fiona
-cligj==0.7.2
-    # via fiona
 contourpy==1.0.6
     # via matplotlib
 cycler==0.11.0
@@ -56,14 +41,12 @@ executing==1.2.0
     # via stack-data
 fastjsonschema==2.16.2
     # via nbformat
-fiona==1.9.3
-    # via geopandas
 fonttools==4.38.0
     # via matplotlib
-geopandas==0.12.2
-    # via -r requirements.in
 idna==3.4
     # via anyio
+imageio==2.37.2
+    # via scikit-image
 ipykernel==6.17.1
     # via
     #   nbclassic
@@ -107,6 +90,8 @@ jupyterlab-pygments==0.2.2
     # via nbconvert
 kiwisolver==1.4.4
     # via matplotlib
+lazy-loader==0.4
+    # via scikit-image
 markupsafe==2.1.1
     # via
     #   jinja2
@@ -121,8 +106,6 @@ matplotlib-inline==0.1.6
     #   ipython
 mistune==2.0.4
     # via nbconvert
-munch==2.5.0
-    # via fiona
 nbclassic==0.4.8
     # via notebook
 nbclient==0.7.0
@@ -147,7 +130,7 @@ nest-asyncio==1.5.6
     #   nbclient
     #   notebook
 networkx==3.1
-    # via -r requirements.in
+    # via scikit-image
 notebook==6.5.2
     # via -r requirements.in
 notebook-shim==0.2.2
@@ -155,23 +138,23 @@ notebook-shim==0.2.2
 numpy==1.23.5
     # via
     #   contourpy
+    #   imageio
     #   matplotlib
     #   opencv-python
-    #   pandas
+    #   scikit-image
     #   scikit-spatial
     #   scipy
-    #   shapely
+    #   tifffile
 opencv-python==4.10.0.84
     # via -r requirements.in
 packaging==21.3
     # via
-    #   geopandas
     #   ipykernel
     #   jupyter-server
+    #   lazy-loader
     #   matplotlib
     #   nbconvert
-pandas==2.0.0
-    # via geopandas
+    #   scikit-image
 pandocfilters==1.5.0
     # via nbconvert
 parso==0.8.3
@@ -183,7 +166,9 @@ pickleshare==0.7.5
 pillow==11.0.0
     # via
     #   -r requirements.in
+    #   imageio
     #   matplotlib
+    #   scikit-image
 platformdirs==2.5.4
     # via jupyter-core
 prometheus-client==0.15.0
@@ -211,17 +196,12 @@ pyparsing==3.0.9
     # via
     #   matplotlib
     #   packaging
-pyproj==3.5.0
-    # via geopandas
 pyrsistent==0.19.2
     # via jsonschema
 python-dateutil==2.8.2
     # via
     #   jupyter-client
     #   matplotlib
-    #   pandas
-pytz==2023.3
-    # via pandas
 pyzmq==24.0.1
     # via
     #   ipykernel
@@ -229,22 +209,23 @@ pyzmq==24.0.1
     #   jupyter-server
     #   nbclassic
     #   notebook
+scikit-image==0.24.0
+    # via -r requirements.in
 scikit-spatial==6.6.0
     # via -r requirements.in
 scipy==1.9.3
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   scikit-image
 send2trash==1.8.0
     # via
     #   jupyter-server
     #   nbclassic
     #   notebook
-shapely==2.0.1
-    # via geopandas
 six==1.16.0
     # via
     #   asttokens
     #   bleach
-    #   munch
     #   python-dateutil
 sniffio==1.3.0
     # via anyio
@@ -257,6 +238,8 @@ terminado==0.17.0
     #   jupyter-server
     #   nbclassic
     #   notebook
+tifffile==2025.12.20
+    # via scikit-image
 tinycss2==1.2.1
     # via nbconvert
 tornado==6.2
@@ -282,8 +265,6 @@ traitlets==5.5.0
     #   nbconvert
     #   nbformat
     #   notebook
-tzdata==2023.3
-    # via pandas
 wcwidth==0.2.5
     # via prompt-toolkit
 webencodings==0.5.1
