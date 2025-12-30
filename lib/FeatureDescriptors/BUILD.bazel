@@ -1,0 +1,11 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
+
+py_library(
+    name = "orb",
+    srcs = ["ORB.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        requirement("scikit-image"),
+    ]
+)
