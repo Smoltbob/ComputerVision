@@ -1,0 +1,27 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
+py_binary(
+    name = "omnidirectional_main",
+    srcs = [
+        "OmnidirectionalModel/omnidirectional_main.py",
+        "OmnidirectionalModel/data_production.py"
+        ],
+    visibility = ["//visibility:public"],
+    deps = [
+        requirement("numpy"),
+        requirement("matplotlib"),
+        requirement("pillow"),
+        requirement("opencv-python"),
+        "//lib/CameraModels:omnidirectional_model"
+    ]
+)
+
+py_library(
+    name = "omnidirectional_model",
+    srcs = [  "OmnidirectionalModel/omnidirectional_model.py",],
+    visibility = ["//visibility:public"],
+    deps = [
+        requirement("scikit-image"),
+        requirement("opencv-python")
+    ]
+)
