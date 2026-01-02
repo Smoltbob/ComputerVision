@@ -1,3 +1,6 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
+
 py_library(
     name = "Constants",
     visibility = ["//visibility:public"],
@@ -15,6 +18,7 @@ py_library(
     srcs = ["RotationUtils/rotation_utils.py"],
     deps = [
         "//lib/Math:Math_utils",
+        requirement("numpy"),
     ],
     visibility = ["//visibility:public"]
 )

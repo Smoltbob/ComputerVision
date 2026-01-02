@@ -11,7 +11,7 @@ py_binary(
         requirement("numpy"),
         requirement("matplotlib"),
         requirement("pillow"),
-        requirement("opencv-python"),
+        requirement("opencv-contrib-python"),
         "//lib/CameraModels:omnidirectional_model"
     ]
 )
@@ -22,6 +22,6 @@ py_library(
     visibility = ["//visibility:public"],
     deps = [
         requirement("scikit-image"),
-        requirement("opencv-python")
+        requirement("opencv-contrib-python")
     ]
 )

@@ -1,0 +1,11 @@
+load("@notebooks//:requirements.bzl", "requirement")
+
+py_library(
+    name = "Se3",
+    srcs = ["Se3.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        requirement("numpy"),
+        "//lib/Math:RotationUtils"
+    ],
+)
