@@ -140,12 +140,12 @@ numpy==1.23.5
     #   contourpy
     #   imageio
     #   matplotlib
-    #   opencv-python
+    #   opencv-contrib-python
     #   scikit-image
     #   scikit-spatial
     #   scipy
     #   tifffile
-opencv-python==4.10.0.84
+opencv-contrib-python==4.11.0.86
     # via -r requirements.in
 packaging==21.3
     # via

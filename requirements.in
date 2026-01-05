@@ -5,4 +5,4 @@ scikit-image
 scipy
 tqdm
 pillow
-opencv-python
+opencv-contrib-python

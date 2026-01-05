@@ -15,7 +15,7 @@ py_library(
 
 py_library(
     name = "RotationUtils",
-    srcs = ["RotationUtils/rotation_utils.py"],
+    srcs = ["rotation_utils.py"],
     deps = [
         "//lib/Math:Math_utils",
         requirement("numpy"),
@@ -26,10 +26,18 @@ py_library(
 
 py_library(
     name = "Quaternions",
-    srcs = ["Quaternions/quaternions.py"],
+    srcs = ["quaternions.py"],
     visibility = ["//visibility:public"],
     deps = [
         "//lib/Math:Math_utils",
     ]
 )
 
+py_library(
+    name = "Triangulation",
+    srcs = ["triangulation.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//lib/Math:Math_utils",
+    ]
+)

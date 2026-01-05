@@ -11,6 +11,13 @@ class Se3:
         new_rotation = self.rotation @ other.rotation
         return Se3(new_translation, new_rotation)
     
+    def getMatrix3x4(self) -> np.ndarray:
+        """Returns the 3x4 transformation matrix."""
+        mat = np.zeros((3, 4))
+        mat[:, :3] = self.rotation
+        mat[:, 3] = self.translation
+        return mat
+    
     @staticmethod
     def from_euler_angles(translation: np.ndarray, roll: float, pitch: float, yaw: float) -> "Se3":
         """

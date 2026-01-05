@@ -7,5 +7,6 @@ py_library(
     visibility = ["//visibility:public"],
     deps = [
         requirement("scikit-image"),
+        requirement("opencv-contrib-python"),
     ]
 )
