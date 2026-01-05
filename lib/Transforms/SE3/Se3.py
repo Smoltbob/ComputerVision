@@ -3,7 +3,7 @@ from lib.Math.rotation_utils import euler_to_rot_mat
 from typing import List
 
 class Se3:
-    def __init__(self, translation: np.ndarray, rotation: np.ndarray):
+    def __init__(self, translation: np.ndarray = np.zeros(3), rotation: np.ndarray = np.eye(3)):
         self.translation = translation
         self.rotation = rotation
 
