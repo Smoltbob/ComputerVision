@@ -1,4 +1,4 @@
-from skimage.feature import ORB
+import cv2
 from skimage.color import rgb2gray
 from typing import Any
 
@@ -6,7 +6,7 @@ class ORBFeatureDescriptor:
     def __init__(self, max_num_features: int):
         self.max_num_features = max_num_features
 
-    def detect_keypoints(self, image: Any):
+    def detect_keypoints(self, image: Any, mask: Any = None) -> Any:
         """
         Detect keypoints and compute descriptors for the given image.
         """
@@ -15,11 +15,12 @@ class ORBFeatureDescriptor:
         descriptors = []  # Feature descriptors
 
         imqray = rgb2gray(image)
-        orb_extractor = ORB(n_keypoints=self.max_num_features)
-        orb_extractor.detect_and_extract(imqray)
+        imggray = (imqray * 255).astype('uint8')
+        orb_extractor = cv2.ORB_create(nfeatures=self.max_num_features)
+        keypoints, descriptors = orb_extractor.detectAndCompute(imggray, mask)
 
-        keypoints = orb_extractor.keypoints
-        descriptors = orb_extractor.descriptors
+        # We only need the (x, y) coordinates of the keypoints
+        keypoints = [kp.pt for kp in keypoints]
 
         print(f"Detected {len(keypoints)} keypoints using ORB.")
 
