@@ -18,6 +18,23 @@ class Se3:
         mat[:, 3] = self.translation
         return mat
     
+    def getMatrix4x4(self) -> np.ndarray:
+        """Returns the 4x4 transformation matrix."""
+        mat = np.eye(4)
+        mat[:3, :3] = self.rotation
+        mat[:3, 3] = self.translation
+        return mat
+    
+    def transformPoint(self, point: np.ndarray) -> np.ndarray:
+        """
+        Transforms a 3D point using the SE3 transformation,
+        doing A * point if A = self.getMatrix4x4()
+
+        Args:
+            point: An homogeneous 3D point as a numpy array of shape (4,)
+        """
+        return np.array([self.rotation @ point[:3] + point[3] * self.translation, point[3]]))
+
     @staticmethod
     def from_euler_angles(translation: np.ndarray, roll: float, pitch: float, yaw: float) -> "Se3":
         """
