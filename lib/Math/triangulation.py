@@ -1,5 +1,5 @@
 from typing import Any, Tuple
-from lib.Transforms.Se3 import Se3
+from lib.Transforms.SE3 import Se3
 import numpy as np
 
 def try_triangulate_point(source_from_world: Se3,
@@ -32,10 +32,10 @@ def try_triangulate_point(source_from_world: Se3,
         tgt_x * target_matrix[2, :] - tgt_w * target_matrix[0, :],
         tgt_y * target_matrix[2, :] - tgt_w * target_matrix[1, :]
     ])
-    
+
     _, _, vt = np.linalg.svd(matrix)
     point_homogeneous = vt[-1]
     if abs(point_homogeneous[3]) < 1e-6:
         return False, None  # Cannot triangulate
-    point_3d = point_homogeneous[:3] / point_homogeneous[3]
+    point_3d = point_homogeneous / point_homogeneous[3]
     return True, point_3d

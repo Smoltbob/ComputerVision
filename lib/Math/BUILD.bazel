@@ -39,6 +39,6 @@ py_library(
     visibility = ["//visibility:public"],
     deps = [
         "//lib/Math:Math_utils",
-        "//lib/Math/Transforms/SE3:Se3",
+        "//lib/Transforms/SE3:Se3",
     ]
 )
