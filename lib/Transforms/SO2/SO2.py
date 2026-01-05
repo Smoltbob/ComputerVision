@@ -1,4 +1,4 @@
-from lib.Math.RotationUtils import rotation_utils
+from lib.Math import rotation_utils
 
 class SO2:
 

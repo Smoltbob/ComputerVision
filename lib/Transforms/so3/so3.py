@@ -1,5 +1,5 @@
 import numpy as np
-from lib.Math.Quaternions.quaternions import *
+from lib.Math.quaternions import *
 from lib.Math.constants import pi
 from lib.Math.math_utils import sqrt, atan2, acos, cos, sin, norm
 from lib.LinearAlgebra.matrix import transpose, compute_determinant_3x3, trace

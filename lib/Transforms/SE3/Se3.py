@@ -1,5 +1,5 @@
 import numpy as np
-from lib.Math.RotationUtils.rotation_utils import euler_to_rot_mat
+from lib.Math.rotation_utils import euler_to_rot_mat
 
 class Se3:
     def __init__(self, translation: np.ndarray, rotation: np.ndarray):

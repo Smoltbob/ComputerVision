@@ -1,4 +1,4 @@
-from lib.Math.Quaternions.quaternions import Quaternion
+from lib.Math.quaternions import Quaternion
 from lib.Math.math_utils import normalize
 
 
